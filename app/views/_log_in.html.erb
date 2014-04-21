@@ -1,0 +1,17 @@
+<% action_url = (action == :sign_up) ? users_url : sessions_url %>
+<% button_name = (action == :sign_up) ? "Sign Up" : "Log In" %>
+<form action="<%= action_url %>" method="post">
+
+  <%= auth_token %>
+
+  <label>Email
+  <input type="text" name="user[email]" value="<%= user.email %>"></label>
+
+  <label>Password
+  <input type="text" name="user[password]" value="<%= user.password %>"></label>
+
+  <button>
+    <%= button_name %>
+  </button>
+
+</form>
