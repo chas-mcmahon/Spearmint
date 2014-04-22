@@ -1,6 +1,14 @@
 Spearmint::Application.routes.draw do
+
+  root to: "sessions#new"
+
   resources :users, only: [:new, :create, :show]
-  resources :sessions, only: [:new, :create, :destroy]
+  resource :session, only: [:new, :create, :destroy]
+
+  match '/activate_account', to: "users#activate_account", via: "get" #get?
+
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

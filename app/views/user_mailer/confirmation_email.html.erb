@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+
+  <body>
+    <h1>Confirm Account</h1>
+
+    <p>
+      Hello, <%= @user.email %>. Follow the link below to activate your account.
+      <br>
+      <a href="<%= @url %>"><%= @url %></a>
+    </p>
+
+    <p>
+      Have a nice day!
+    </p>
+  </body>
+</html>
