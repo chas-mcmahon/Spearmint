@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140422180802) do
+ActiveRecord::Schema.define(version: 20140422210024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cash_accounts", force: true do |t|
+    t.integer  "user_id",        null: false
+    t.integer  "balance",        null: false
+    t.integer  "available_cash"
+    t.string   "account_type"
+    t.boolean  "active_status"
+    t.float    "apy"
+    t.string   "company_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "cash_accounts", ["user_id"], name: "index_cash_accounts_on_user_id", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",            null: false
