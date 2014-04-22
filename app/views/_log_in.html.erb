@@ -1,4 +1,4 @@
-<% action_url = (action == :sign_up) ? users_url : sessions_url %>
+<% action_url = (action == :sign_up) ? users_url : session_url %>
 <% button_name = (action == :sign_up) ? "Sign Up" : "Log In" %>
 <form action="<%= action_url %>" method="post">
 
@@ -8,7 +8,7 @@
   <input type="text" name="user[email]" value="<%= user.email %>"></label>
 
   <label>Password
-  <input type="password" name="user[password]" value="<%= user.password %>"></label>
+  <input type="password" name="user[password]"></label>
 
   <button>
     <%= button_name %>

@@ -7,7 +7,13 @@
 </head>
 <body>
 
-<%= yield %>
+  <form action="<%= session_url %>" method="post">
+    <%= auth_token %>
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Sign Out">
+  </form>
+
+  <%= yield %>
 
 </body>
 </html>

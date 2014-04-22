@@ -14,8 +14,8 @@ class User < ActiveRecord::Base
   end
 
   def self.find_by_credentials(email, secret)
-    @user = User.find_by(email)
-    @user && User.password_digest.is_password?(secret) ? @user : nil
+    @user = User.find_by(email: email)
+    @user && @user.is_password?(secret) ? @user : nil
   end
 
   #make sure this logic is ok
@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
   end
 
   def is_password?(secret)
-    BCrypt::Password.new(self.password).is_password?(secret)
+    BCrypt::Password.new(self.password_digest).is_password?(secret)
   end
 
   def password=(secret)
