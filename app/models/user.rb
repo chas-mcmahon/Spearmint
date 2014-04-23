@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
   validates :email, :password, presence: true
   validates :email, uniqueness: true
 
+  has_many :companies
+
+  # has_many :cash_accounts, through: :companies, source: :cash_accounts
+
   #should I actually need this?
   attr_accessor :password
 

@@ -11,24 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140422210024) do
+ActiveRecord::Schema.define(version: 20140423142336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cash_accounts", force: true do |t|
-    t.integer  "user_id",        null: false
-    t.integer  "balance",        null: false
-    t.integer  "available_cash"
-    t.string   "account_type"
-    t.boolean  "active_status"
+    t.integer  "company_id", null: false
+    t.float    "balance",    null: false
     t.float    "apy"
-    t.string   "company_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "cash_accounts", ["user_id"], name: "index_cash_accounts_on_user_id", unique: true, using: :btree
+  create_table "companies", force: true do |t|
+    t.string   "name",        null: false
+    t.integer  "user_id",     null: false
+    t.string   "host_url"
+    t.string   "sign_in_url"
+    t.date     "date_added"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "companies", ["name"], name: "index_companies_on_name", unique: true, using: :btree
+
+  create_table "transactions", force: true do |t|
+    t.integer  "transactionable_id"
+    t.string   "transactionable_type"
+    t.float    "amount",               null: false
+    t.date     "date"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",            null: false
