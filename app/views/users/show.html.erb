@@ -1,15 +1,39 @@
 <h1><%= @user.email %></h1>
 
 <% if @companies.length > 0 %>
-  <h2>Your Companies</h2>
+  <h2>Companies</h2>
   <ul>
     <% @companies.each do |company| %>
-      <li><%= company.name %></li>
+      <li>
+        <h3><%= company.name %></h3>
+        <p>Total Value: $<%= company.sum_account_value %></p>
+        <% if company.cash_accounts.length > 0 %>
+          <ul>
+            <!-- this needs to be flexible to handle other acct types -->
+            <% company.cash_accounts.each do |cash_account| %>
+            <li>
+              <%= cash_account.name %>
+              <%= cash_account.balance %>
+            </li>
+            <% end %>
+          </ul>
+        <% end %>
+        <form action="<%= company_cash_accounts_url(company.id) %>" method="post">
+          <%= auth_token %>
+          <label for="cash-account-name">Name</label>
+          <input type="text" name="cash_account[name]" id="cash-account-name">
+          <label for="cash-account-balance">Balance</label>
+          <!-- Need to fix number field giving bad input (only ints, and float precision 1) -->
+          <input type="number" name="cash_account[balance]" id="cash-account-balance">
+          <input type="hidden" name="cash_account[company_id]" value="<%= company.id %>">
+          <input type="submit" value="Add Cash Account">
+        </form>
+      </li>
     <% end %>
   </ul>
 <% end %>
 
-<h3>Create New Company</h3>
+<h3>Add Bank</h3>
 <form action="<%= user_companies_url(@user) %>" method="post">
   <%= auth_token %>
 
@@ -30,6 +54,7 @@
   <input type="hidden" name="company[date_added]" value="<%= Date.today %>">
   <input type="hidden" name="company[user_id]" value="<%= @user.id %>">
   <div class="submit">
-  <input type="submit" value="Add New Bank">
+  <input type="submit" value="Add Bank">
   </div>
 </form>
+

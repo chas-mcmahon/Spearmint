@@ -2,12 +2,17 @@ Spearmint::Application.routes.draw do
 
   root to: "sessions#new"
 
+  resource :session, only: [:new, :create, :destroy]
+
   resources :users, only: [:new, :create, :show] do
     resources :companies, only: [:create]
   end
-  resource :session, only: [:new, :create, :destroy]
 
-  resources :companies, only: [:destroy]
+  resources :companies, only: [:destroy] do
+    resources :cash_accounts, only: [:create]
+  end
+
+  resources :cash_accounts, only: [:destroy]
 
   match '/activate_account', to: "users#activate_account", via: "get" #get?
 
