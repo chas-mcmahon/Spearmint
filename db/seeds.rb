@@ -6,22 +6,42 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
-# Company.create({
-#   name: "TD",
-#   user_id: 1,
-#   url: "tdbank.com/",
-#   sign_in_url: "onlinebanking.tdbank.com/",
-#   date_added: Date.today
-# })
-#
-# CashAccount.create({
-#   company_id: 1,
-#   balance: 100.00,
-#   apy: 0.00
-# })
-#
-# CashAccount.first.transactions.new({
+
+User.create({
+  email: "chas@example.com",
+  password: "password"
+})
+
+Company.create({
+  name: "TD",
+  user_id: 1,
+  host_url: "tdbank.com/",
+  sign_in_url: "onlinebanking.tdbank.com/",
+  date_added: Date.today
+})
+
+CashAccount.create({
+  name: "Checking",
+  company_id: 1,
+  balance: 100.00,
+  apy: 0.00
+})
+
+# Transaction.create({
+#   transactionable_id: 1,
+#   transactionable_type: "CashAccount",
 #   amount: 7.50,
+#   type: "debit",
 #   date: Date.today,
 #   description: "Xian Famous Foods"
 # })
+
+CashAccount.first.transactions.create({
+  amount: 7.50,
+  transaction_type: "debit",
+  date: Date.today,
+  description: "Xian Famous Foods",
+  user_id: 1
+})
+
+#next set up a buttload of transactions

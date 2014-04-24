@@ -11,6 +11,7 @@ class CompaniesController < ApplicationController
     end
   end
 
+  #implement button for this
   def destroy
     @company = Company.find(params[:id])
     @user = current_user

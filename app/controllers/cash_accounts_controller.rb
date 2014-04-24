@@ -12,6 +12,7 @@ class CashAccountsController < ApplicationController
     end
   end
 
+  #implement button for this
   def destroy
     @cash_account = CashAccount.find_by(params[:id])
     @cash_account.destroy!

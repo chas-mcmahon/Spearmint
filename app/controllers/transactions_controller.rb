@@ -14,6 +14,7 @@ class TransactionsController < ApplicationController
     end
   end
 
+  #implement button for this
   def destroy
     @transaction = Transaction.find(params[:id])
     @transaction.destroy!
@@ -21,8 +22,7 @@ class TransactionsController < ApplicationController
   end
 
   private
-
   def transaction_params
-    params.require(:transaction).permit(:amount, :description,  :date)
+    params.require(:transaction).permit(:amount, :description, :date, :user_id)
   end
 end

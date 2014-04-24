@@ -19,7 +19,7 @@ class Company < ActiveRecord::Base
   def sum_account_value
     total = 0
     self.cash_accounts.each do |acct|
-      total += acct.balance
+      total += acct.update_balance
     end
     total
   end

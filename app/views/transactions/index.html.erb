@@ -1,0 +1,45 @@
+<h1><%= current_user.email %></h1>
+
+<h2>Transactions</h2>
+
+<!-- move this to another backbone controlled dialogue -->
+<form action="<%= transactions_url %>" method="post">
+  <%= auth_token %>
+  <div class="input"><label for="transaction-date">Date</label>
+  <input type="date" name="transaction[date]" id="transaction-date">
+  </div>
+
+  <div class="input"><label for="transaction-description">Description</label>
+  <input type="text" name="transaction[description]" id="transaction=description">
+  </div>
+  <!-- fix number field here -->
+  <div class="input"><label for="transaction-amount">Amount</label>
+  <input type="number" name="transaction[amount]" id="transaction-amount">
+  </div>
+
+  <!-- Was there a better way to do this? Nest under the user in routes? -->
+  <input type="hidden" name="transaction[user_id]" value="<%= current_user.id %>">
+
+  <div class="submit">
+  <input type="submit" value="Add transaction">
+  </div>
+</form>
+
+<% if @transactions.length > 0 %>
+  <table>
+    <thead>
+      <th>Date</th>
+      <th>Description</th>
+      <th>Amount</th>
+    </thead>
+    <tbody>
+  <% @transactions.each do |transaction| %>
+    <tr>
+      <td><%= transaction.date %></td>
+      <td><%= transaction.description %></td>
+      <td>$<%= transaction.amount %></td>
+    </tr>
+  <% end %>
+    </tbody>
+  </table>
+<% end %>

@@ -9,11 +9,17 @@
   <% if flash[:errors] %>
     <%= flash[:errors] %>
   <% end %>
+
+  <!-- Add navbar here! -->
+  <a href="<%= user_url(current_user) %>">Overview</a>
+  <a href="<%= transactions_url %>">Transactions</a>
+
   <form action="<%= session_url %>" method="post">
     <%= auth_token %>
     <input type="hidden" name="_method" value="delete">
     <input type="submit" value="Sign Out">
   </form>
+  <!-- End navbar! -->
 
   <%= yield %>
 
