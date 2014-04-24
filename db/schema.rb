@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140424154631) do
+ActiveRecord::Schema.define(version: 20140424200133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "budgets", force: true do |t|
+    t.integer  "user_id",    null: false
+    t.float    "amount",     null: false
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "cash_accounts", force: true do |t|
     t.integer  "company_id", null: false
@@ -24,6 +33,15 @@ ActiveRecord::Schema.define(version: 20140424154631) do
     t.datetime "updated_at"
     t.string   "name",       null: false
   end
+
+  create_table "categories", force: true do |t|
+    t.string   "name",       null: false
+    t.integer  "budget_id",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "categories", ["budget_id"], name: "index_categories_on_budget_id", unique: true, using: :btree
 
   create_table "companies", force: true do |t|
     t.string   "name",        null: false
@@ -47,7 +65,10 @@ ActiveRecord::Schema.define(version: 20140424154631) do
     t.datetime "updated_at"
     t.integer  "user_id",              null: false
     t.string   "transaction_type"
+    t.integer  "category_id",          null: false
   end
+
+  add_index "transactions", ["category_id"], name: "index_transactions_on_category_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",            null: false

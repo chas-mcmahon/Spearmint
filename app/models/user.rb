@@ -8,9 +8,11 @@ class User < ActiveRecord::Base
 
   has_many :companies
   has_many :cash_accounts, through: :companies, source: :cash_accounts
+  has_many :budgets
 
   #get someone to check this logic
   has_many :transactions #, through: :cash_accounts, source: :transactions
+
 
   #should I actually need this?
   attr_accessor :password

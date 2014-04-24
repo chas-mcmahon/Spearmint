@@ -27,6 +27,18 @@ CashAccount.create({
   apy: 0.00
 })
 
+Budget.create({
+  user_id: 1,
+  amount: 200.00,
+  start_date: Date.today,
+  end_date: Date.today.next_month
+})
+
+Category.create({
+  name: "Food",
+  budget_id: 1
+})
+
 # Transaction.create({
 #   transactionable_id: 1,
 #   transactionable_type: "CashAccount",
@@ -41,7 +53,8 @@ CashAccount.first.transactions.create({
   transaction_type: "debit",
   date: Date.today,
   description: "Xian Famous Foods",
-  user_id: 1
+  user_id: 1,
+  category_id: 1,
 })
 
 #next set up a buttload of transactions

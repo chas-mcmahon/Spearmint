@@ -15,6 +15,8 @@ Spearmint::Application.routes.draw do
   resources :cash_accounts, only: [:destroy]
 
   resources :transactions, only: [:index, :create, :destroy]
+  resources :budgets, only: [:index, :create, :destroy]
+  # resources :goals, only: [:index, :create, :destroy]
 
   match '/activate_account', to: "users#activate_account", via: "get" #get?
 
