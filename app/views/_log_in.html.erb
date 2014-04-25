@@ -5,14 +5,17 @@
 
   <%= auth_token %>
 
-  <label for="uyser-email">Email</label>
+  <div class="input"><label for="uyser-email">Email</label>
   <input type="text" name="user[email]" id="user-email" value="<%= email %>">
+  </div>
 
-  <label for="user-password">Password</label>
+  <div class="input"><label for="user-password">Password</label>
   <input type="password" name="user[password]" id="user-password">
+  </div>
 
-  <button>
-    <%= button_name %>
-  </button>
+
+  <div class="submit">
+  <input type="submit" value="<%= button_name %>">
+  </div>
 
 </form>

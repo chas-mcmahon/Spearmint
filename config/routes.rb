@@ -10,9 +10,13 @@ Spearmint::Application.routes.draw do
 
   resources :companies, only: [:destroy] do
     resources :cash_accounts, only: [:create]
+    resources :credit_accounts, only: [:create]
+    resources :loan_accounts, only: [:create]
   end
 
   resources :cash_accounts, only: [:destroy]
+  resources :credit_accounts, only: [:destroy]
+  resources :loan_accounts, only: [:destroy]
 
   resources :transactions, only: [:index, :create, :destroy]
   resources :budgets, only: [:index, :create, :destroy]
