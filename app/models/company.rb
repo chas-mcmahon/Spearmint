@@ -6,16 +6,15 @@ class Company < ActiveRecord::Base
     primary_key: :id
   )
 
-  has_many(
-    :cash_accounts,
-    class_name: "CashAccount",
-    foreign_key: :company_id,
-    primary_key: :id
-  )
+  has_many :cash_accounts
+  has_many :credit_accounts
+  has_many :loan_accounts
 
   validates :name, :user_id, presence: true
   validates :name, uniqueness: true
 
+
+  #update to include the values of all account types
   def sum_account_value
     total = 0
     self.cash_accounts.each do |acct|

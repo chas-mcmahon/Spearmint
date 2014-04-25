@@ -1,22 +1,49 @@
+<!-- Add net worth figure across all companies' values -->
+
 <% if @companies.length > 0 %>
   <h2>Companies</h2>
   <ul>
     <% @companies.each do |company| %>
       <li>
         <h3><%= company.name %></h3>
+        <!-- nest this stuff in a better tag, and add a class to it -->
         <p>Total Value: $<%= company.sum_account_value %></p>
+
         <% if company.cash_accounts.length > 0 %>
           <ul>
-            <!-- this needs to be flexible to handle other acct types -->
             <% company.cash_accounts.each do |cash_account| %>
             <li>
               <%= cash_account.name %>
-              <!-- straighten out logic between acct balance here and company balance -->
               <%= cash_account.balance %>
             </li>
             <% end %>
           </ul>
         <% end %>
+
+
+        <% if company.credit_accounts.length > 0 %>
+          <ul>
+            <% company.credit_accounts.each do |credit_account| %>
+            <li>
+              <%= credit_account.name %>
+              <%= credit_account.balance %>
+            </li>
+            <% end %>
+          </ul>
+        <% end %>
+
+
+        <% if company.loan_accounts.length > 0 %>
+          <ul>
+            <% company.loan_accounts.each do |loan_account| %>
+            <li>
+              <%= loan_account.name %>
+              <%= loan_account.balance %>
+            </li>
+            <% end %>
+          </ul>
+        <% end %>
+
 
 
         <!-- this should go in a partial; eventually should be handled by backbone -->
