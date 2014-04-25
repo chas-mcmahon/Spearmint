@@ -1,3 +1,82 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+html, body, h2, h3, ul, li, form, div, label {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="submit"] {
+  -webkit-appearance: none;
+  box_sizing: content-box;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  vertical-align: baseline;
+  width: auto;
+  background: transparent;
+  color: inherit;
+}
+
+input[type="submit"] {
+  display: inline;
+  cursor: pointer;
+}
+
+body {
+
+}
+
+form {
+
+}
+
+h2 {
+
+}
+
+h3 {
+
+}
+
+.input {
+
+}
+
+.input > label {
+
+}
+
+.input > input {
+
+}
+
+.input > input:focus {
+
+}
+
+.submit > input {
+
+}
+
+.submit > input:hover {
+
+}
+
+.submit > input:active {
+
+}
+
+
+
+
+

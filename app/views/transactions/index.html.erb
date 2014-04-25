@@ -3,6 +3,11 @@
 <!-- move this to another backbone controlled dialogue -->
 <form action="<%= transactions_url %>" method="post">
   <%= auth_token %>
+  <!-- fix number field here -->
+  <div class="input"><label for="transaction-amount">Amount</label>
+  <input type="number" name="transaction[amount]" id="transaction-amount">
+  </div>
+
   <div class="input"><label for="transaction-date">Date</label>
   <input type="date" name="transaction[date]" id="transaction-date">
   </div>
@@ -10,12 +15,26 @@
   <div class="input"><label for="transaction-description">Description</label>
   <input type="text" name="transaction[description]" id="transaction=description">
   </div>
-  <!-- fix number field here -->
-  <div class="input"><label for="transaction-amount">Amount</label>
-  <input type="number" name="transaction[amount]" id="transaction-amount">
+
+  <!-- pretty sure the class here should match the tag... -->
+  <div class="select"><label for="transaction-category">Category</label>
+  <select name="transaction[category_id]" id="transaction-category">
+    <% @categories.each do |category| %>
+    <option value="<%= category.id %>"><%= category.name %></option>
+    <% end %>
+  </select>
   </div>
 
-  <!-- Was there a better way to do this? Nest under the user in routes? -->
+  <div class="input"><label for="transaction-debit">Expenditure</label>
+  <input type="radio" name="transaction[transaction_type]" value="debit"
+    id="transaction-debit"></div>
+
+  <div class="input"><label for="transaction-credit">Income</label>
+  <input type="radio" name="transaction[transaction_type]" value="credit"
+    id="transaction-credit"></div>
+
+  <!-- Wasn't there a better way to do this? Nest under the user in routes?
+       Look at Jonathan's tutorial on -->
   <input type="hidden" name="transaction[user_id]" value="<%= current_user.id %>">
 
   <div class="submit">

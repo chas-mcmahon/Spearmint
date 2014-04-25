@@ -6,6 +6,7 @@
       <li>
         <div class="budget-listing">
         <h3><%= budget.category.name %></h3>
+        <p>From <%= budget.start_date %> to <%= budget.end_date %>
         <!-- Add fancy bar here eventually! -->
         <p>$<%= budget.calculate_expenditures %> of $<%= budget.amount %></p>
         </div>

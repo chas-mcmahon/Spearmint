@@ -13,7 +13,6 @@ class User < ActiveRecord::Base
   #get someone to check this logic
   has_many :transactions #, through: :cash_accounts, source: :transactions
 
-
   #should I actually need this?
   attr_accessor :password
 

@@ -7,7 +7,9 @@ class Budget < ActiveRecord::Base
   def calculate_expenditures
     total = 0
     self.transactions.each do |transaction|
-      total += transaction.amount
+      if transaction.date <= self.end_date && transaction.date >= self.start_date
+        total += transaction.amount
+      end
     end
     total
   end

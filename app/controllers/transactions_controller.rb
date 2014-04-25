@@ -2,6 +2,7 @@ class TransactionsController < ApplicationController
 
   def index
     @transactions = current_user.transactions
+    @categories = Category.all
   end
 
   def create
@@ -23,6 +24,12 @@ class TransactionsController < ApplicationController
 
   private
   def transaction_params
-    params.require(:transaction).permit(:amount, :description, :date, :user_id)
+    params.require(:transaction).permit(
+      :amount,
+      :description,
+      :date,
+      :user_id,
+      :category_id,
+      :transaction_type)
   end
 end
