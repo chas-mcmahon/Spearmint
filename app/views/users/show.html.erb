@@ -60,7 +60,7 @@
           <div class="input">
           <!-- Need to fix number field giving bad input (only ints, and float precision 1) -->
           <label for="cash-account-balance">Balance</label>
-          <input type="number" name="cash_account[balance]" id="cash-account-balance">
+          <input type="number" step=".01" min="0" name="cash_account[balance]" id="cash-account-balance">
           </div>
 
           <!-- better way to get company id? -->
@@ -84,7 +84,7 @@
           <div class="input">
           <!-- Need to fix number field giving bad input (only ints, and float precision 1) -->
           <label for="credit-account-balance">Total Credit</label>
-          <input type="number" name="credit_account[total_credit]" id="credit-account-balance">
+          <input type="number" min="0" name="credit_account[total_credit]" id="credit-account-balance">
           </div>
 
           <div class="input">
@@ -116,12 +116,12 @@
           <div class="input">
           <!-- Need to fix number field giving bad input (only ints, and float precision 1) -->
           <label for="loan-account-balance">Balance</label>
-          <input type="number" name="loan_account[balance]" id="loan-account-balance">
+          <input type="number" min="0" name="loan_account[balance]" id="loan-account-balance">
           </div>
 
           <div class="input">
           <label for="loan-account-minimum-payment">Minimum Payment</label>
-          <input type="number" name="loan_account[minimum_payment]">
+          <input type="number" step=".01" min="0" name="loan_account[minimum_payment]">
           </div>
 
           <!-- better way to get company id? -->
