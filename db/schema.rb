@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140425193527) do
+ActiveRecord::Schema.define(version: 20140426212710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,18 @@ ActiveRecord::Schema.define(version: 20140425193527) do
     t.float    "total_credit", null: false
     t.float    "balance",      null: false
     t.float    "apr"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "goals", force: true do |t|
+    t.integer  "user_id",              null: false
+    t.integer  "account_id",           null: false
+    t.string   "name",                 null: false
+    t.float    "amount",               null: false
+    t.float    "monthly_contribution", null: false
+    t.date     "planned_date",         null: false
+    t.date     "projected_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

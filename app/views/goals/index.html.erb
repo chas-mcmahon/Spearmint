@@ -1,0 +1,46 @@
+<h2>Goals</h2>
+
+<% if @goals.length > 0 %>
+  <ul>
+    <% @goals.each do |goal| %>
+      <li>
+        <%= goal.name %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<form action="<%= goals_url %>" method="post">
+
+  <div class="input">
+    <label for="goal-name">Name</label>
+    <input type="text" name="goal[name]" id="goal-name">
+  </div>
+
+  <div class="input">
+    <label for="goal-amount">Amount</label>
+    <input type="number" step=".01" min="1" name="goal[amount]" id="goal-amount">
+  </div>
+
+  <div class="input">
+    <label for="goal-monthly-contribution">Monthly Contribution</label>
+    <input type="number" step=".01" min="1" name="goal[monthly_contribution]" id="goal-monthly-contribution">
+  </div>
+
+  <div class="input">
+    <label for="goal-planned-date">Planned Date</label>
+    <input type="date" name="goal[planned_date]" id="goal-planned-date">
+  </div>
+
+  <div class="select"><label for="goal-account">Account</label>
+    <select name="goal[account_id]">
+      <% current_user.cash_accounts.each do |cash_account| %>
+      <option value="<%= cash_account.id %>"><%= cash_account.name %></option>
+      <% end %>
+    </select>
+  </div>
+
+  <input type="hidden" name="goal[user_id]" value="<%= current_user.id %>">
+
+  <input type="submit" value="Add Goal">
+</form>

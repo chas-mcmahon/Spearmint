@@ -82,6 +82,15 @@ Budget.create({
   end_date: end_date
 })
 
+Goal.create({
+  user_id: 1,
+  account_id: 1,
+  name: "Emergency Fund",
+  amount: 2500.00,
+  monthly_contribution: 250.00,
+  planned_date: Date.new(2014, 12, 1)
+})
+
 Category.create({
   name: "Food",
   budget_id: 1

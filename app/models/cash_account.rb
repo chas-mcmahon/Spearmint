@@ -2,7 +2,7 @@ class CashAccount < ActiveRecord::Base
   validates :name, :company_id, :balance, presence: true
 
   belongs_to :company
-
+  has_one :goal
   has_many :transactions, as: :transactionable
 
   #maybe nest under user model to help include non-acct transactions(cash)

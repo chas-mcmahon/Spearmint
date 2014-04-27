@@ -7,17 +7,17 @@ class BudgetsController < ApplicationController
   def create
     @budget = Budget.new(budget_params)
     if @budget.save
-      redirect_to #the budget index url
+      redirect_to budgets_url
     else
       flash[:errors] = @budget.errors.full_messages
-      redirect_to #also the budget index url
+      redirect_to budgets_url
     end
   end
 
   def destroy
     budget = Budget.find(params[:id])
     budget.destroy!
-    redirect_to #again, the budget index url
+    redirect_to budgets_url
   end
 
   private

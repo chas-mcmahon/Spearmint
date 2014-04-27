@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
 
-  #ask if this is right callback
   before_create :make_activation_token
   before_validation :ensure_session_token
   validates :email, :password, presence: true
@@ -8,10 +7,12 @@ class User < ActiveRecord::Base
 
   has_many :companies
   has_many :cash_accounts, through: :companies, source: :cash_accounts
-  has_many :budgets
+  has_many :credit_accounts, through: :companies, source: :credit_accounts
+  has_many :loan_accounts, through: :companies, source: :loan_accounts
 
-  #get someone to check this logic
-  has_many :transactions #, through: :cash_accounts, source: :transactions
+  has_many :budgets
+  has_many :goals
+  has_many :transactions
 
   #should I actually need this?
   attr_accessor :password
