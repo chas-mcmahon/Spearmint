@@ -1,0 +1,36 @@
+<div class="form">
+  <form action="<%= budgets_url %>" method="post">
+    <%= auth_token %>
+
+    <!-- <div class="select">
+      <label for="budget-category">Category</label>
+      <select id="budget-category">
+        <option>
+      </select>
+    </div> -->
+
+    <div class="input">
+    <label for="budget-amount">Amount</label>
+    <input type="number" min="1" name="budget[amount]" id="budget-amount">
+    </div>
+
+    <!-- should automate the dates (should have monthly interval and start at the beginning of the current month)-->
+    <div class="input">
+    <label for="budget-start-date">Start</label>
+    <input type="date" name="budget[start_date]" id="budget-start-date">
+    </div>
+
+    <div class="input">
+    <label fore="budget-end-date">End</label>
+    <input type="date" name="budget[end_date]" id="budget-end-date">
+    </div>
+
+    <div class="submit">
+    <input type="submit" value="Create Budget">
+    </div>
+  </form>
+</div>
+
+
+<!-- either make new category for new budget and seed a bunch of budgets for a new user OR make budgets belong to categories, allow categories to be made independently, and have new budgets assigned to existing categories -->
+

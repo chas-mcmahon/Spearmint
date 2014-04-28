@@ -1,0 +1,102 @@
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="submit"],
+input[type="number"],
+input[type="date"] {
+  -webkit-appearance: none;
+  box-sizing: content-box;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  vertical-align: baseline;
+  width: auto;
+  background: transparent;
+  color: inherit;
+}
+
+.form {
+  background-color: #ccc;
+  width: 200px;
+  border-radius: 3px;
+  padding: 25px 50px;
+}
+
+.input {
+  padding: 5px 0;
+}
+
+.input > label {
+  display: block;
+  font-weight: bold;
+}
+
+.input > input[type="radio"] + label {
+  display: inline;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"] {
+  width: 200px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+.input > input[type="radio"] {
+}
+
+.input > input[type="text"] {
+
+}
+
+.input > input[type="password"] {
+
+}
+
+.input > input[type="number"] {
+
+}
+
+.input > input[type="date"] {
+
+}
+
+.select {
+//  background-color: white;
+//  border: 1px solid black;
+}
+
+.select > label {
+  font-weight: bold;
+}
+
+.submit {
+  padding: 10px 0;
+}
+
+.submit > input {
+  position: relative;
+  display: inline-block;
+  background-color: #090;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 3px;
+  box-shadow: 0 3px 0 0 #080;
+}
+
+.submit > input:active {
+  top: 3px;
+  box-shadow: none;
+  background-color: #080;
+}
+
+
+

@@ -1,7 +1,7 @@
 class Budget < ActiveRecord::Base
-  validates :user_id, :amount, presence: true
+  validates :user_id, :category_id, :amount, presence: true
   belongs_to :user
-  has_one :category
+  belongs_to :category
   has_many :transactions, through: :category, source: :transactions
 
   def calculate_expenditures

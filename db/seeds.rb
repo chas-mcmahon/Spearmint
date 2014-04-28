@@ -70,6 +70,7 @@ Budget.create({
 
 Budget.create({
   user_id: 1,
+  category_id: 2,
   amount: 224.0,
   start_date: start_date,
   end_date: end_date
@@ -77,6 +78,7 @@ Budget.create({
 
 Budget.create({
   user_id: 1,
+  category_id: 3,
   amount: 1200,
   start_date: start_date,
   end_date: end_date
@@ -92,18 +94,15 @@ Goal.create({
 })
 
 Category.create({
-  name: "Food",
-  budget_id: 1
+  name: "Food"
 })
 
 Category.create({
-  name: "Trasportation",
-  budget_id: 2
+  name: "Trasportation"
 })
 
 Category.create({
-  name: "Rent",
-  budget_id: 3
+  name: "Rent"
 })
 
 CashAccount.first.transactions.create({

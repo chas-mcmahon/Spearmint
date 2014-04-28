@@ -20,29 +20,9 @@ html, body, nav, a, header, ul, li, h1, div, label {
   font: inherit;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="submit"],
-input[type="number"],
-input[type="date"] {
-  -webkit-appearance: none;
-  box-sizing: content-box;
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  font: inherit;
-  vertical-align: baseline;
-  width: auto;
-  background: transparent;
-  color: inherit;
-}
-
 body {
   font-family: sans-serif;
-  background-color: #ccc;
+/*  background-color: #ccc;*/
 }
 
 li {
@@ -114,7 +94,7 @@ h1 {
   display: inline-block;
   color: #fff;
   box-shadow: 0 3px 0 0 #cc9;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 
 #sign-out-button:hover {
@@ -126,6 +106,7 @@ h1 {
   box-shadow: none;
   background: #f90;
 }
+
 /*.submit > input {
   position: relative;
   display: inline-block;
@@ -137,43 +118,16 @@ h1 {
   box-shadow: 0 3px 0 0 #070;
 }*/
 
-/*----- FORM STYLING -----*/
 
-.form {
 
-}
 
-.input {
-}
 
-.input > label {
-  display: block;
-  font-weight: bold;
-}
 
-.input > input {
-  background-color: white;
-}
 
-.input > input[type="text"] {
 
-}
 
-.input > input[type="password"] {
 
-}
 
-.input > input[type="number"] {
-
-}
-
-.input > input[type="date"] {
-
-}
-
-.select {
-
-}
 
 
 
