@@ -19,6 +19,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @companies = @user.companies
+    @budgets = @user.budgets
+    @goals = @user.goals
     # @cash_accounts = @user.cash_accounts
     render :show
   end

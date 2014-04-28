@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Spearmint</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -11,19 +12,24 @@
   <% end %>
 
   <% if signed_in? %>
-  <!-- Add navbar here! -->
-
-  <a href="<%= user_url(current_user) %>">Overview</a>
-  <a href="<%= transactions_url %>">Transactions</a>
-  <a href="<%= budgets_url %>">Budgets</a>
-  <a href="<%= goals_url %>">Goals</a>
-  <form action="<%= session_url %>" method="post">
-    <%= auth_token %>
-    <input type="hidden" name="_method" value="delete">
-    <input type="submit" value="Sign Out">
-  </form>
-  <!-- End navbar! -->
+  <header class="navbar">
+    <nav class="group">
+      <h1 class="navbar-logo">Spearmint</h1>
+      <ul class="navbar-list">
+        <li><a href="<%= user_url(current_user) %>">Overview</a></li>
+        <li><a href="<%= transactions_url %>">Transactions</a></li>
+        <li><a href="<%= budgets_url %>">Budgets</a></li>
+        <li><a href="<%= goals_url %>">Goals</a></li>
+        <li><form action="<%= session_url %>" method="post">
+          <%= auth_token %>
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="Sign Out" id="sign-out-button">
+        </form></li>
+      </ul>
+    </nav>
+  </header>
   <% end %>
+
   <%= yield %>
 
 </body>

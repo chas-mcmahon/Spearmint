@@ -1,11 +1,11 @@
 <h2>Transactions</h2>
 
 <!-- move this to another backbone controlled dialogue -->
+<div class="form">
 <form action="<%= transactions_url %>" method="post">
   <%= auth_token %>
-  <!-- fix number field here -->
   <div class="input"><label for="transaction-amount">Amount</label>
-  <input type="number" step=".01" min="0" name="transaction[amount]" id="transaction-amount">
+  <input type="number" step=".01" min=".01" name="transaction[amount]" id="transaction-amount">
   </div>
 
   <div class="input"><label for="transaction-date">Date</label>
@@ -33,15 +33,11 @@
   <input type="radio" name="transaction[transaction_type]" value="credit"
     id="transaction-credit"></div>
 
-  <!-- Wasn't there a better way to do this? Nest under the user in routes?
-       Look at Jonathan's tutorial on -->
-  <input type="hidden" name="transaction[user_id]" value="<%= current_user.id %>">
-
   <div class="submit">
   <input type="submit" value="Add transaction">
   </div>
 </form>
-
+</div>
 <% if @transactions.length > 0 %>
   <table>
     <thead>

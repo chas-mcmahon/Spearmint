@@ -1,12 +1,17 @@
 class TransactionsController < ApplicationController
 
+  #implement pagination of transactions
   def index
     @transactions = current_user.transactions
     @categories = Category.all
   end
 
+  # def new
+  #   @transaction = Transaction.new
+  # end
+
   def create
-    @transaction = Transaction.new(transaction_params)
+    @transaction = current_user.transactions.new(transaction_params)
     if @transaction.save
       redirect_to transactions_url
     else
@@ -14,6 +19,14 @@ class TransactionsController < ApplicationController
       redirect_to transactions_url
     end
   end
+
+  # def edit
+  #
+  # end
+
+  # def update
+  #
+  # end
 
   #implement button for this
   def destroy
@@ -28,7 +41,6 @@ class TransactionsController < ApplicationController
       :amount,
       :description,
       :date,
-      :user_id,
       :category_id,
       :transaction_type)
   end

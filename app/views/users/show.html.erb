@@ -1,7 +1,7 @@
 <!-- Add net worth figure across all companies' values -->
 
+<h2>Companies</h2>
 <% if @companies.length > 0 %>
-  <h2>Companies</h2>
   <ul>
     <% @companies.each do |company| %>
       <li>
@@ -63,7 +63,7 @@
           <input type="number" step=".01" min="0" name="cash_account[balance]" id="cash-account-balance">
           </div>
 
-          <!-- better way to get company id? -->
+          <!-- better way to get company id? -> remove to it's own new page?-->
           <input type="hidden" name="cash_account[company_id]" value="<%= company.id %>">
           <div class="submit">
           <input type="submit" value="Add Cash Account">
@@ -100,7 +100,6 @@
           <input type="submit" value="Add Credit Account">
           </div>
         </form>
-
 
 
 
@@ -165,4 +164,49 @@
   <input type="submit" value="Add Bank">
   </div>
 </form>
+
+
+<h2>Budgets</h2>
+<% if @budgets.length > 0 %>
+  <table>
+    <thead>
+      <th>Category</th>
+      <th>Spent</th>
+      <th>Budget</th>
+      <th>Over?</th>
+    </thead>
+    <tbody>
+      <% @budgets.each do |budget| %>
+      <tr>
+        <td><%= budget.category.name %></td>
+        <td><%= budget.calculate_expenditures %></td>
+        <td>$<%= budget.amount %></td>
+        <td>
+          <% left = budget.amount_left %>
+          <% if left < 0 %>
+            <span>$<%= left %></span>
+          <% else %>
+            <span>$<%= left %> left</span>
+          <% end %>
+        </td>
+      <tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+
+<h2>Goals</h2>
+<% if @goals.length > 0 %>
+<ul>
+  <% @goals.each do |goal| %>
+    <li>
+      <%= goal.name %>
+      Projected Date:
+      <%= goal.update_projected_date %>
+    </li>
+  <% end %>
+</ul>
+<% end %>
+
 

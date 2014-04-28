@@ -14,4 +14,8 @@ class Budget < ActiveRecord::Base
     total
   end
 
+  def amount_left
+    self.amount - self.calculate_expenditures
+  end
+
 end

@@ -5,7 +5,7 @@ class BudgetsController < ApplicationController
   end
 
   def create
-    @budget = Budget.new(budget_params)
+    @budget = current_user.budgets.new(budget_params)
     if @budget.save
       redirect_to budgets_url
     else
@@ -22,6 +22,6 @@ class BudgetsController < ApplicationController
 
   private
   def budget_params
-    params.require(:budget).permit(:name, :user_id, :amount, :start_date, :end_date)
+    params.require(:budget).permit(:name, :amount, :start_date, :end_date)
   end
 end
