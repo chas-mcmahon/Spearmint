@@ -10,10 +10,19 @@ class Company < ActiveRecord::Base
 
 
   #update to include the values of all account types
-  def sum_account_value
+  def total_accounts_value
     total = 0
     self.cash_accounts.each do |acct|
       total += acct.update_balance
+    end
+
+    #currently just uses available credit; maybe should account for credit taken out instead
+    self.credit_accounts.each do |acct|
+      total += acct.available_credit
+    end
+
+    self.loan_accounts.each do |acct|
+      total -= acct.update_balance
     end
     total
   end

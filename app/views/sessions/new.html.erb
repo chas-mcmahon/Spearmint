@@ -1,9 +1,3 @@
 <h1>Sign In</h1>
 
 <%= render "./log_in", :user => @user, :action => :sign_in %>
-
-<form action="<%= new_user_url %>" method="get" >
-  <div class="submit">
-    <input type="submit" value="Sign Up">
-  </div>
-</form>

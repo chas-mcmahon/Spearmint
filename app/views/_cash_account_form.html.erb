@@ -1,0 +1,21 @@
+<h4>Add New Cash Account</h4>
+<form action="<%= company_cash_accounts_url(company.id) %>" method="post">
+<%= auth_token %>
+
+  <div class="input">
+    <label for="cash-account-name">Name</label>
+    <input type="text" name="cash_account[name]" id="cash-account-name">
+  </div>
+
+  <div class="input">
+    <!-- Need to fix number field giving bad input (only ints, and float precision 1) -->
+    <label for="cash-account-balance">Balance</label>
+    <input type="number" step=".01" min="0" name="cash_account[balance]" id="cash-account-balance">
+  </div>
+
+    <!-- better way to get company id? -> remove to it's own new page?-->
+    <input type="hidden" name="cash_account[company_id]" value="<%= company.id %>">
+  <div class="submit">
+    <input type="submit" value="Add Cash Account">
+  </div>
+</form>

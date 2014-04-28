@@ -1,0 +1,28 @@
+<h4>Add New Credit Account</h4>
+<form action="<%= company_credit_accounts_url(company.id) %>" method="post">
+  <%= auth_token %>
+
+  <div class="input">
+  <label for="credit-account-name">Name</label>
+  <input type="text" name="credit_account[name]" id="credit-account-name">
+  </div>
+
+  <div class="input">
+  <!-- Need to fix number field giving bad input (only ints, and float precision 1) -->
+  <label for="credit-account-balance">Total Credit</label>
+  <input type="number" min="0" name="credit_account[total_credit]" id="credit-account-balance">
+  </div>
+
+  <div class="input">
+  <label for="credit-account-apr">APR</label>
+  <input type="number" name="credit_account[apr]" id="credit-account-apr">
+  </div>
+
+  <!-- better way to get company id? -->
+  <input type="hidden" name="credit_account[company_id]" value="<%= company.id %>">
+  <!-- set this someplace else? -->
+  <input type="hidden" name="credit_account[balance]" value="<%= 0.00 %>">
+  <div class="submit">
+  <input type="submit" value="Add Credit Account">
+  </div>
+</form>

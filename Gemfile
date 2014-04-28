@@ -49,3 +49,7 @@ gem 'bcrypt'
 
 # Use debugger
 gem 'debugger', group: [:development, :test]
+
+#ADD MONEY AND/OR MONEY-RAILS HERE
+
+

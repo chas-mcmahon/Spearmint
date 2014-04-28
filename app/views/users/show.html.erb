@@ -1,212 +1,103 @@
 <!-- Add net worth figure across all companies' values -->
+<div class="main-content group">
+  <div class="accounts">
+    <h2>Companies</h2>
+    <% if @companies.length > 0 %>
+      <ul>
+        <% @companies.each do |company| %>
+          <li>
+            <h3><%= company.name %></h3>
+            <!-- nest this stuff in a better tag, and add a class to it -->
+            <p>Total Value: $<%= company.total_accounts_value %></p>
 
-<h2>Companies</h2>
-<% if @companies.length > 0 %>
-  <ul>
-    <% @companies.each do |company| %>
-      <li>
-        <h3><%= company.name %></h3>
-        <!-- nest this stuff in a better tag, and add a class to it -->
-        <p>Total Value: $<%= company.sum_account_value %></p>
-
-        <% if company.cash_accounts.length > 0 %>
-          <ul>
-            <% company.cash_accounts.each do |cash_account| %>
-            <li>
-              <%= cash_account.name %>
-              <%= cash_account.balance %>
-            </li>
+            <% if company.cash_accounts.length > 0 %>
+              <ul>
+                <% company.cash_accounts.each do |cash_account| %>
+                <li>
+                  <%= cash_account.name %>
+                  $<%= cash_account.balance %>
+                </li>
+                <% end %>
+              </ul>
             <% end %>
-          </ul>
-        <% end %>
 
-
-        <% if company.credit_accounts.length > 0 %>
-          <ul>
-            <% company.credit_accounts.each do |credit_account| %>
-            <li>
-              <%= credit_account.name %>
-              <%= credit_account.balance %>
-            </li>
+            <% if company.credit_accounts.length > 0 %>
+              <ul>
+                <% company.credit_accounts.each do |credit_account| %>
+                <li>
+                  <%= credit_account.name %>
+                  $<%= credit_account.balance %>
+                </li>
+                <% end %>
+              </ul>
             <% end %>
-          </ul>
-        <% end %>
 
-
-        <% if company.loan_accounts.length > 0 %>
-          <ul>
-            <% company.loan_accounts.each do |loan_account| %>
-            <li>
-              <%= loan_account.name %>
-              <%= loan_account.balance %>
-            </li>
+            <% if company.loan_accounts.length > 0 %>
+              <ul>
+                <% company.loan_accounts.each do |loan_account| %>
+                <li>
+                  <%= loan_account.name %>
+                  $<%= loan_account.balance %>
+                </li>
+                <% end %>
+              </ul>
             <% end %>
-          </ul>
+
+    <!-- RENDER ACCOUNT FORMS (need to send in company object)-->
+
+          </li>
         <% end %>
-
-
-
-        <!-- this should go in a partial; eventually should be handled by backbone -->
-
-        <h4>Add New Cash Account</h4>
-        <form action="<%= company_cash_accounts_url(company.id) %>" method="post">
-          <%= auth_token %>
-
-          <div class="input">
-          <label for="cash-account-name">Name</label>
-          <input type="text" name="cash_account[name]" id="cash-account-name">
-          </div>
-
-          <div class="input">
-          <!-- Need to fix number field giving bad input (only ints, and float precision 1) -->
-          <label for="cash-account-balance">Balance</label>
-          <input type="number" step=".01" min="0" name="cash_account[balance]" id="cash-account-balance">
-          </div>
-
-          <!-- better way to get company id? -> remove to it's own new page?-->
-          <input type="hidden" name="cash_account[company_id]" value="<%= company.id %>">
-          <div class="submit">
-          <input type="submit" value="Add Cash Account">
-          </div>
-        </form>
-
-
-
-        <h4>Add New Credit Account</h4>
-        <form action="<%= company_credit_accounts_url(company.id) %>" method="post">
-          <%= auth_token %>
-
-          <div class="input">
-          <label for="credit-account-name">Name</label>
-          <input type="text" name="credit_account[name]" id="credit-account-name">
-          </div>
-
-          <div class="input">
-          <!-- Need to fix number field giving bad input (only ints, and float precision 1) -->
-          <label for="credit-account-balance">Total Credit</label>
-          <input type="number" min="0" name="credit_account[total_credit]" id="credit-account-balance">
-          </div>
-
-          <div class="input">
-          <label for="credit-account-apr">APR</label>
-          <input type="number" name="credit_account[apr]" id="credit-account-apr">
-          </div>
-
-          <!-- better way to get company id? -->
-          <input type="hidden" name="credit_account[company_id]" value="<%= company.id %>">
-          <!-- set this someplace else? -->
-          <input type="hidden" name="credit_account[balance]" value="<%= 0.00 %>">
-          <div class="submit">
-          <input type="submit" value="Add Credit Account">
-          </div>
-        </form>
-
-
-
-        <h4>Add New Loan Account</h4>
-        <form action="<%= company_loan_accounts_url(company.id) %>" method="post">
-          <%= auth_token %>
-
-          <div class="input">
-          <label for="loan-account-name">Name</label>
-          <input type="text" name="loan_account[name]" id="loan-account-name">
-          </div>
-
-          <div class="input">
-          <!-- Need to fix number field giving bad input (only ints, and float precision 1) -->
-          <label for="loan-account-balance">Balance</label>
-          <input type="number" min="0" name="loan_account[balance]" id="loan-account-balance">
-          </div>
-
-          <div class="input">
-          <label for="loan-account-minimum-payment">Minimum Payment</label>
-          <input type="number" step=".01" min="0" name="loan_account[minimum_payment]">
-          </div>
-
-          <!-- better way to get company id? -->
-          <input type="hidden" name="loan_account[company_id]" value="<%= company.id %>">
-          <div class="submit">
-          <input type="submit" value="Add Loan Account">
-          </div>
-        </form>
-
-
-      </li>
+      </ul>
     <% end %>
-  </ul>
-<% end %>
-
-<!-- Also should go in a partial and be handled by backbone
-     (popup dialogue or something)-->
-<h3>Add Bank</h3>
-<form action="<%= user_companies_url(@user) %>" method="post">
-  <%= auth_token %>
-
-  <div class="input"><label for="company-name">Name</label>
-  <input type="text" name="company[name]" id="company-name">
   </div>
 
-  <div class="input">
-  <label for="company-url">Host Url</label>
-  <input type="text" name="company[host_url]" id="company-host-url">
-  </div>
 
-  <div class="input">
-  <label fore="company-sign-in-url">Sign In Url</label>
-  <input type="text" name="company[sign_in_url]" id="company-sign-in-url">
-  </div>
-
-  <!-- again, check on sending data this way -->
-  <input type="hidden" name="company[date_added]" value="<%= Date.today %>">
-  <input type="hidden" name="company[user_id]" value="<%= @user.id %>">
-
-  <div class="submit">
-  <input type="submit" value="Add Bank">
-  </div>
-</form>
-
-
-<h2>Budgets</h2>
-<% if @budgets.length > 0 %>
-  <table class="budget-table">
-    <thead>
-      <th>Category</th>
-      <th>Spent</th>
-      <th>Budget</th>
-      <th>Over?</th>
-    </thead>
-    <tbody>
-      <% @budgets.each do |budget| %>
-      <tr>
-        <td><%= budget.category.name %></td>
-        <td><%= budget.calculate_expenditures %></td>
-        <td>$<%= budget.amount %></td>
-        <td>
-          <% left = budget.amount_left %>
-          <% if left < 0 %>
-            <span>$<%= left %></span>
-          <% else %>
-            <span>$<%= left %> left</span>
-          <% end %>
-        </td>
-      <tr>
+<!-- RENDER BANK FORM (need to send in user object)-->
+  <div class="right-column">
+    <div class="budgets">
+      <h2>Budgets</h2>
+      <% if @budgets.length > 0 %>
+        <table class="budget-table">
+          <thead>
+            <th>Category</th>
+            <th>Spent</th>
+            <th>Budget</th>
+            <th>Over?</th>
+          </thead>
+          <tbody>
+            <% @budgets.each do |budget| %>
+            <tr>
+              <td><%= budget.category.name %></td>
+              <td><%= budget.calculate_expenditures %></td>
+              <td>$<%= budget.amount %></td>
+              <td>
+                <% left = budget.amount_left %>
+                <% if left < 0 %>
+                  <span>$<%= left %></span>
+                <% else %>
+                  <span>$<%= left %> left</span>
+                <% end %>
+              </td>
+            <tr>
+            <% end %>
+          </tbody>
+        </table>
       <% end %>
-    </tbody>
-  </table>
-<% end %>
+    </div>
 
-
-<h2>Goals</h2>
-<% if @goals.length > 0 %>
-<ul>
-  <% @goals.each do |goal| %>
-    <li>
-      <%= goal.name %>
-      Projected Date:
-      <%= goal.update_projected_date %>
-    </li>
-  <% end %>
-</ul>
-<% end %>
-
-
+    <div class="goals">
+      <h2>Goals</h2>
+      <% if @goals.length > 0 %>
+      <ul>
+        <% @goals.each do |goal| %>
+          <li>
+            <%= goal.name %>
+            Projected Date:
+            <%= goal.update_projected_date %>
+          </li>
+        <% end %>
+      </ul>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -22,7 +22,12 @@ html, body, nav, a, header, ul, li, h1, div, label {
 
 body {
   font-family: sans-serif;
-/*  background-color: #ccc;*/
+  background-color: #ffffff;
+}
+
+h2 {
+  display: block;
+  margin: auto;
 }
 
 li {
@@ -117,6 +122,38 @@ h1 {
   font-weight: bold;
   box-shadow: 0 3px 0 0 #070;
 }*/
+
+/*----- OVERVIEW PAGE STYLING -----*/
+
+.main-content {
+  margin: auto;
+  width: 700px;
+  background-color: #ccc;
+}
+
+.accounts {
+  float: left;
+  padding: 20px;
+}
+
+.right-column {
+  float: left;
+}
+
+.budgets {
+  padding: 20px;
+/*  float: left;*/
+}
+
+.goals {
+  padding: 20px;
+/*  float: left;*/
+}
+
+/*----- BUDGET PAGE STYLING -----*/
+
+/*----- GOAL PAGE STYLING -----*/
+
 
 
 

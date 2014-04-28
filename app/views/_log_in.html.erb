@@ -1,21 +1,33 @@
 <% action_url = (action == :sign_up) ? users_url : session_url %>
 <% button_name = (action == :sign_up) ? "Sign Up" : "Sign In" %>
+<% alt_url = (action == :sign_up) ? new_session_url : new_user_url %>
+<% alt_button = (action == :sign_up) ? "Sign In" : "Sign Up" %>
 <% email = (@user != nil) ? @user.email : "" %>
-<form action="<%= action_url %>" method="post">
 
-  <%= auth_token %>
+<div class="login">
+  <h1>Welcome to Spearmint</h1>
+  <form class="login-form" action="<%= action_url %>" method="post">
 
-  <div class="input"><label for="user-email">Email</label>
-  <input type="text" name="user[email]" id="user-email" value="<%= email %>">
-  </div>
+    <%= auth_token %>
 
-  <div class="input"><label for="user-password">Password</label>
-  <input type="password" name="user[password]" id="user-password">
-  </div>
+    <div class="input"><label for="user-email">Email</label>
+    <input type="text" name="user[email]" id="user-email" value="<%= email %>">
+    </div>
+
+    <div class="input"><label for="user-password">Password</label>
+    <input type="password" name="user[password]" id="user-password">
+    </div>
 
 
-  <div class="submit">
-  <input type="submit" value="<%= button_name %>">
-  </div>
+    <div class="submit">
+    <input type="submit" value="<%= button_name %>">
+    </div>
 
-</form>
+  </form>
+
+  <form clas="alt-form" action="<%= alt_url %>" method="get" >
+    <div class="submit">
+      <input type="submit" value="<%= alt_button %>">
+    </div>
+  </form>
+</div>

@@ -57,12 +57,13 @@ CreditAccount.create({
 LoanAccount.create({
   name: "Student Loan",
   company_id: 2,
-  balance: 100000000,
+  balance: 10000,
   minimum_payment: 1000
 })
 
 Budget.create({
   user_id: 1,
+  category_id: 1,
   amount: 200.00,
   start_date: start_date,
   end_date: end_date
@@ -86,11 +87,20 @@ Budget.create({
 
 Goal.create({
   user_id: 1,
-  account_id: 1,
-  name: "Emergency Fund",
+  cash_account_id: 1,
+  name: "New TV",
   amount: 2500.00,
   monthly_contribution: 250.00,
   planned_date: Date.new(2014, 12, 1)
+})
+
+Goal.create({
+  user_id: 1,
+  cash_account_id: 2,
+  name: "Emergency Fund",
+  amount: 4000.00,
+  monthly_contribution: 500.00,
+  planned_date: Date.new(2014, 8, 1)
 })
 
 Category.create({

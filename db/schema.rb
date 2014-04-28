@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20140426212710) do
 
   create_table "goals", force: true do |t|
     t.integer  "user_id",              null: false
-    t.integer  "account_id",           null: false
+    t.integer  "cash_account_id",      null: false
     t.string   "name",                 null: false
     t.float    "amount",               null: false
     t.float    "monthly_contribution", null: false

@@ -25,7 +25,11 @@
     <div class="select"><label for="goal-account">Account</label>
       <select name="goal[account_id]">
         <% current_user.cash_accounts.each do |cash_account| %>
-        <option value="<%= cash_account.id %>"><%= cash_account.name %></option>
+          <% if cash_account.goal == nil %>
+            <option value="<%= cash_account.id %>">
+              <%= cash_account.name %>
+            </option>
+          <% end %>
         <% end %>
       </select>
     </div>

@@ -1,32 +1,35 @@
-<h2>Transactions</h2>
+<div class="transaction-main-content group">
+  <%= render "./transaction_form",
+      :categories => @categories %>
 
-<%= render "./transaction_form",
-    :categories => @categories %>
-
-<% if @transactions.length > 0 %>
-  <table>
-    <thead>
-      <th>Date</th>
-      <th>Description</th>
-      <th>Category</th>
-      <th>Amount</th>
-    </thead>
-    <tbody>
-  <% @transactions.each do |transaction| %>
-    <tr>
-      <td><%= transaction.date %></td>
-      <td><%= transaction.description %></td>
-      <td><%= transaction.category.name %></td>
-      <td>
-        <% if transaction.transaction_type == "debit" %>
-          -
-        <% end %>
-        $<%= transaction.amount %>
-      </td>
-    </tr>
+  <% if @transactions.length > 0 %>
+  <div class="transactions">
+    <h2>Transactions</h2>
+    <table class="transactions-table">
+      <thead>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Amount</th>
+      </thead>
+      <tbody>
+    <% @transactions.each do |transaction| %>
+      <tr>
+        <td><%= transaction.date %></td>
+        <td><%= transaction.description %></td>
+        <td><%= transaction.category.name %></td>
+        <td>
+          <% if transaction.transaction_type == "debit" %>
+            -
+          <% end %>
+          $<%= transaction.amount %>
+        </td>
+      </tr>
+    <% end %>
+      </tbody>
+    </table>
+  </div>
+  <% else %>
+    <p>You have no transactions!</p>
   <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <p>You have no transactions!</p>
-<% end %>
+</div>

@@ -1,0 +1,26 @@
+<h3>Add Bank</h3>
+<form action="<%= user_companies_url(@user) %>" method="post">
+  <%= auth_token %>
+
+  <div class="input"><label for="company-name">Name</label>
+  <input type="text" name="company[name]" id="company-name">
+  </div>
+
+  <div class="input">
+  <label for="company-url">Host Url</label>
+  <input type="text" name="company[host_url]" id="company-host-url">
+  </div>
+
+  <div class="input">
+  <label fore="company-sign-in-url">Sign In Url</label>
+  <input type="text" name="company[sign_in_url]" id="company-sign-in-url">
+  </div>
+
+  <!-- again, check on sending data this way -->
+  <input type="hidden" name="company[date_added]" value="<%= Date.today %>">
+  <input type="hidden" name="company[user_id]" value="<%= @user.id %>">
+
+  <div class="submit">
+  <input type="submit" value="Add Bank">
+  </div>
+</form>

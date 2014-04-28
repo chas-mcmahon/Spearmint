@@ -52,6 +52,14 @@ class User < ActiveRecord::Base
     self.password_digest = BCrypt::Password.create(secret)
   end
 
+  def net_worth
+    worth = 0
+    self.companies.each do |company|
+      worth += company.total_accounts_value
+    end
+    worth
+  end
+
 end
 
 
