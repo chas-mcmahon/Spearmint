@@ -6,7 +6,9 @@
   position: relative;
   width: 300px;
   margin: 50px auto;
+  padding: 20px 0;
   background-color: #ccc;
+  border-radius: 3px;
 }
 
 .login > h1 {
@@ -14,15 +16,20 @@
   color: black;
 }
 
-.login-form > .input > input{
-  display: block;
-  width: 220px;
+.login-form {
+  padding: 5px 40px;
 }
 
-.alt-form > .submit > input {
+.login-form > .input > input {
+  padding: 5px;
+  display: block;
+  width: 218px;
+}
+
+.alt-form {
   padding-left: 40px;
 }
 
-.login-form {
-  padding: 5px 40px;
+.alt-form > .submit {
+  padding-top: 0px;
 }
