@@ -1,13 +1,41 @@
-<h2>Goals</h2>
-
-<%= render "./goal_form" %>
-
 <% if @goals.length > 0 %>
-  <ul>
-    <% @goals.each do |goal| %>
-      <li>
-        <%= goal.name %>
-      </li>
-    <% end %>
-  </ul>
+  <div class="goal-main-content">
+    <h2>Goals</h2>
+    <ul>
+      <% @goals.each do |goal| %>
+        <li>
+          <div class="goal">
+
+            <div class="goal-list">
+              <ul>
+                <li><%= goal.name %></li>
+                <li>Account: <%= goal.cash_account.name %></li>
+                <li>Amount: <%= number_to_currency(goal.get_amount_dollars) %>
+
+                <li> Balance:
+                <%= number_to_currency(goal.cash_account.get_balance_dollars) %>
+                </li>
+
+                <li> Contribution:
+                  <%= number_to_currency(goal.get_contribution_dollars) %>
+                </li>
+
+                <li>Planned Date: <%= goal.planned_date %></li>
+
+                <li>Projected Date: <%= goal.projected_date %></li>
+              </ul>
+            </div>
+
+            <div class="goal-buttons">
+              <button>Edit</button>
+              <button>Delete</button>
+            </div>
+
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
+
+<%= render "./forms/goal_form" %>

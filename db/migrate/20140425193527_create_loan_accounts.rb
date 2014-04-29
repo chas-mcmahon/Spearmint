@@ -3,8 +3,8 @@ class CreateLoanAccounts < ActiveRecord::Migration
     create_table :loan_accounts do |t|
       t.string :name, null: false
       t.integer :company_id, null: false
-      t.float :balance, null: false, precision: 2
-      t.float :minimum_payment, null: false, precision: 2
+      t.integer :balance_cents, null: false
+      t.integer :minimum_payment_cents, null: false
       t.timestamps
     end
   end

@@ -50,6 +50,9 @@ gem 'bcrypt'
 # Use debugger
 gem 'debugger', group: [:development, :test]
 
-#ADD MONEY AND/OR MONEY-RAILS HERE
+gem 'backbone-on-rails'
+
+# gem 'money'
+# gem 'money-rails'
 
 

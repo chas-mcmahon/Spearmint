@@ -10,12 +10,12 @@
   <div class="input">
   <!-- Need to fix number field giving bad input (only ints, and float precision 1) -->
   <label for="loan-account-balance">Balance</label>
-  <input type="number" min="0" name="loan_account[balance]" id="loan-account-balance">
+  <input type="number" min="0" name="loan_account[balance_cents]" id="loan-account-balance">
   </div>
 
   <div class="input">
   <label for="loan-account-minimum-payment">Minimum Payment</label>
-  <input type="number" step=".01" min="0" name="loan_account[minimum_payment]">
+  <input type="number" step=".01" min="0" name="loan_account[minimum_payment_cents]">
   </div>
 
   <!-- better way to get company id? -->

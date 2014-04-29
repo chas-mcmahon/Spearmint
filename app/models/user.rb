@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-
+  include MoneyHelper
   before_create :make_activation_token
   before_validation :ensure_session_token
   validates :email, :password, presence: true
@@ -53,9 +53,9 @@ class User < ActiveRecord::Base
   end
 
   def net_worth
-    worth = 0
+    worth = 0.0
     self.companies.each do |company|
-      worth += company.total_accounts_value
+      worth += company.total_accounts_value_dollars
     end
     worth
   end

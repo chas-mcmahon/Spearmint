@@ -2,18 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+//probably should fix this so that the width is 600 to match other pages
 .transaction-main-content {
-  width: 800px;
+  width: 600px;
   margin: auto;
+//  background-color: #900;
 }
 
 .transactions {
   width: 500px;
-  float: left;
+  padding: 0 50px;
+//  float: left;
 }
 
 .transactions-form {
-  float: left;
+//  float: left;
 }
 
 .transactions-table {
@@ -41,4 +45,8 @@
 
 .transactions-table > tbody > tr > td {
   border: 1px solid #ccc;
+}
+
+.amount-cell {
+  text-align: right;
 }

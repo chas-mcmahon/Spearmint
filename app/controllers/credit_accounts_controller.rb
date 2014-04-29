@@ -23,6 +23,6 @@ class CreditAccountsController < ApplicationController
 
   private
   def credit_account_params
-    params.require(:credit_account).permit(:name, :company_id, :balance, :total_credit, :apr)
+    params.require(:credit_account).permit(:name, :company_id, :balance_cents, :total_credit_cents, :apr)
   end
 end

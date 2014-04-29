@@ -1,7 +1,4 @@
 <div class="transaction-main-content group">
-  <%= render "./transaction_form",
-      :categories => @categories %>
-
   <% if @transactions.length > 0 %>
   <div class="transactions">
     <h2>Transactions</h2>
@@ -18,11 +15,11 @@
         <td><%= transaction.date %></td>
         <td><%= transaction.description %></td>
         <td><%= transaction.category.name %></td>
-        <td>
+        <td class="amount-cell">
           <% if transaction.transaction_type == "debit" %>
             -
           <% end %>
-          $<%= transaction.amount %>
+          <%= number_to_currency(transaction.get_dollars) %>
         </td>
       </tr>
     <% end %>
@@ -33,3 +30,5 @@
     <p>You have no transactions!</p>
   <% end %>
 </div>
+
+<%= render "./forms/transaction_form", :categories => @categories %>

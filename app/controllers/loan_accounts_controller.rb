@@ -23,6 +23,6 @@ class LoanAccountsController < ApplicationController
 
   private
   def loan_account_params
-    params.require(:loan_account).permit(:name, :company_id, :balance, :minimum_payment)
+    params.require(:loan_account).permit(:name, :company_id, :balance_cents, :minimum_payment_cents)
   end
 end

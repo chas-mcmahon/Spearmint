@@ -23,6 +23,6 @@ class CashAccountsController < ApplicationController
 
   private
   def cash_account_params
-    params.require(:cash_account).permit(:name, :company_id, :balance)
+    params.require(:cash_account).permit(:name, :company_id, :balance_cents)
   end
 end

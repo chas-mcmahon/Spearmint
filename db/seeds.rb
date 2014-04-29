@@ -34,37 +34,37 @@ Company.create({
 CashAccount.create({
   name: "TD Student Checking",
   company_id: 1,
-  balance: 700.00,
+  balance_cents: 70000,
   apy: 0.00
 })
 
 CashAccount.create({
   name: "TD Student Savings",
   company_id: 1,
-  balance: 2000.00,
+  balance_cents: 200000,
   apy: 0.01
 })
 
 CreditAccount.create({
   name: "Credit Card",
   company_id: 2,
-  total_credit: 3000.00,
-  balance: 0,
-  apr: 10.00
+  total_credit_cents: 300000,
+  balance_cents: 0,
+  apr: 10
 })
 
 #make new company and update company_id here
 LoanAccount.create({
   name: "Student Loan",
   company_id: 2,
-  balance: 10000,
-  minimum_payment: 1000
+  balance_cents: 1000000,
+  minimum_payment_cents: 100000
 })
 
 Budget.create({
   user_id: 1,
   category_id: 1,
-  amount: 200.00,
+  amount_cents: 20000,
   start_date: start_date,
   end_date: end_date
 })
@@ -72,7 +72,7 @@ Budget.create({
 Budget.create({
   user_id: 1,
   category_id: 2,
-  amount: 224.0,
+  amount_cents: 22400,
   start_date: start_date,
   end_date: end_date
 })
@@ -80,7 +80,7 @@ Budget.create({
 Budget.create({
   user_id: 1,
   category_id: 3,
-  amount: 1200,
+  amount_cents: 120000,
   start_date: start_date,
   end_date: end_date
 })
@@ -89,8 +89,8 @@ Goal.create({
   user_id: 1,
   cash_account_id: 1,
   name: "New TV",
-  amount: 2500.00,
-  monthly_contribution: 250.00,
+  amount_cents: 250000,
+  monthly_contribution_cents: 25000,
   planned_date: Date.new(2014, 12, 1)
 })
 
@@ -98,8 +98,8 @@ Goal.create({
   user_id: 1,
   cash_account_id: 2,
   name: "Emergency Fund",
-  amount: 4000.00,
-  monthly_contribution: 500.00,
+  amount_cents: 400000,
+  monthly_contribution_cents: 50000,
   planned_date: Date.new(2014, 8, 1)
 })
 
@@ -116,18 +116,18 @@ Category.create({
 })
 
 CashAccount.first.transactions.create({
-  amount: 7.50,
+  amount_cents: 750,
   transaction_type: "debit",
   date: start_date.next_day,
   description: "Xian Famous Foods",
   user_id: 1,
-  category_id: 1,
+  category_id: 1
 })
 
 i = 0
 25.times do
   i += 1
-  amount = Random.new.rand(125) + 1
+  amount_cents = Random.new.rand(12500) + 1
   category = Random.new.rand(3) + 1
   day = Random.new.rand(30) + 1
   date = Date.new(2014, 4, day)
@@ -141,7 +141,7 @@ i = 0
   # end
 
   CashAccount.first.transactions.create({
-    amount: amount,
+    amount_cents: amount_cents,
     transaction_type: transaction_type,
     date: date,
     description: "Transaction#{i}",

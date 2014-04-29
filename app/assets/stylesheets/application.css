@@ -77,9 +77,10 @@ h1 {
   float: right;
 }
 
+/*need to push down everything but the button, but how???*/
 .navbar-list > li {
   float: left;
-  padding: 15px 20px;
+  padding: 10px 15px;
 }
 
 .navbar-list > li > a {
@@ -128,7 +129,7 @@ h1 {
 .main-content {
   margin: auto;
   width: 700px;
-  background-color: #ccc;
+  background-color: #eee;
 }
 
 .accounts {

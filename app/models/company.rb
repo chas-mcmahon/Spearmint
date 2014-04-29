@@ -1,4 +1,5 @@
 class Company < ActiveRecord::Base
+  include MoneyHelper
   belongs_to :user
 
   has_many :cash_accounts
@@ -10,7 +11,7 @@ class Company < ActiveRecord::Base
 
 
   #update to include the values of all account types
-  def total_accounts_value
+  def total_accounts_value_dollars
     total = 0
     self.cash_accounts.each do |acct|
       total += acct.update_balance
@@ -24,6 +25,6 @@ class Company < ActiveRecord::Base
     self.loan_accounts.each do |acct|
       total -= acct.update_balance
     end
-    total
+    convert_cents(total)
   end
 end

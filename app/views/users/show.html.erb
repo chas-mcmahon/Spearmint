@@ -1,4 +1,5 @@
-<!-- Add net worth figure across all companies' values -->
+<!-- Add user net worth figure across all companies' values -->
+<!-- PUT BACK IN THE FORM TO MAKE NEW COMPANIES AND ACCOUNTS -->
 <div class="main-content group">
   <div class="accounts">
     <h2>Companies</h2>
@@ -8,14 +9,14 @@
           <li>
             <h3><%= company.name %></h3>
             <!-- nest this stuff in a better tag, and add a class to it -->
-            <p>Total Value: $<%= company.total_accounts_value %></p>
+            <p>Total Value: $<%= company.total_accounts_value_dollars %></p>
 
             <% if company.cash_accounts.length > 0 %>
               <ul>
                 <% company.cash_accounts.each do |cash_account| %>
                 <li>
                   <%= cash_account.name %>
-                  $<%= cash_account.balance %>
+                  <%= number_to_currency(cash_account.get_balance_dollars) %>
                 </li>
                 <% end %>
               </ul>
@@ -26,7 +27,7 @@
                 <% company.credit_accounts.each do |credit_account| %>
                 <li>
                   <%= credit_account.name %>
-                  $<%= credit_account.balance %>
+                  <%= number_to_currency(credit_account.get_balance_dollars) %>
                 </li>
                 <% end %>
               </ul>
@@ -37,7 +38,7 @@
                 <% company.loan_accounts.each do |loan_account| %>
                 <li>
                   <%= loan_account.name %>
-                  $<%= loan_account.balance %>
+                  <%= number_to_currency(loan_account.get_balance_dollars) %>
                 </li>
                 <% end %>
               </ul>
@@ -67,15 +68,16 @@
           <tbody>
             <% @budgets.each do |budget| %>
             <tr>
+  <!-- make the name a link to transactions filtered by that category for this month -->
               <td><%= budget.category.name %></td>
-              <td><%= budget.calculate_expenditures %></td>
-              <td>$<%= budget.amount %></td>
+              <td><%= number_to_currency(budget.expenditure_dollars) %></td>
+              <td><%= number_to_currency(budget.get_amount_dollars) %></td>
               <td>
-                <% left = budget.amount_left %>
+                <% left = budget.amount_left_dollars %>
                 <% if left < 0 %>
-                  <span>$<%= left %></span>
+                  <span><%= number_to_currency(left) %></span>
                 <% else %>
-                  <span>$<%= left %> left</span>
+                  <span><%= number_to_currency(left) %> left</span>
                 <% end %>
               </td>
             <tr>

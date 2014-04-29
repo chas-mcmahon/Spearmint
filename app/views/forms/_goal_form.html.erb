@@ -9,12 +9,12 @@
 
     <div class="input">
       <label for="goal-amount">Amount</label>
-      <input type="number" step=".01" min="1" name="goal[amount]" id="goal-amount">
+      <input type="number" step=".01" min="1" name="goal[amount_cents]" id="goal-amount">
     </div>
 
     <div class="input">
       <label for="goal-monthly-contribution">Monthly Contribution</label>
-      <input type="number" step=".01" min="1" name="goal[monthly_contribution]" id="goal-monthly-contribution">
+      <input type="number" step=".01" min="1" name="goal[monthly_contribution_cents]" id="goal-monthly-contribution">
     </div>
 
     <div class="input">
@@ -22,6 +22,8 @@
       <input type="date" name="goal[planned_date]" id="goal-planned-date">
     </div>
 
+
+    <!-- PROBABLY SHOULD ADD SOME LOGIC FOR NO ACCOUNTS AVAILABLE -->
     <div class="select"><label for="goal-account">Account</label>
       <select name="goal[account_id]">
         <% current_user.cash_accounts.each do |cash_account| %>

@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(version: 20140426212710) do
   enable_extension "plpgsql"
 
   create_table "budgets", force: true do |t|
-    t.integer  "user_id",     null: false
-    t.integer  "category_id", null: false
-    t.float    "amount",      null: false
+    t.integer  "user_id",      null: false
+    t.integer  "category_id",  null: false
+    t.integer  "amount_cents", null: false
     t.date     "start_date"
     t.date     "end_date"
     t.datetime "created_at"
@@ -29,12 +29,12 @@ ActiveRecord::Schema.define(version: 20140426212710) do
   add_index "budgets", ["category_id"], name: "index_budgets_on_category_id", unique: true, using: :btree
 
   create_table "cash_accounts", force: true do |t|
-    t.integer  "company_id", null: false
-    t.float    "balance",    null: false
+    t.integer  "company_id",    null: false
+    t.integer  "balance_cents", null: false
     t.float    "apy"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name",       null: false
+    t.string   "name",          null: false
   end
 
   create_table "categories", force: true do |t|
@@ -58,32 +58,32 @@ ActiveRecord::Schema.define(version: 20140426212710) do
   add_index "companies", ["name"], name: "index_companies_on_name", unique: true, using: :btree
 
   create_table "credit_accounts", force: true do |t|
-    t.string   "name",         null: false
-    t.integer  "company_id",   null: false
-    t.float    "total_credit", null: false
-    t.float    "balance",      null: false
+    t.string   "name",               null: false
+    t.integer  "company_id",         null: false
+    t.integer  "total_credit_cents", null: false
+    t.integer  "balance_cents",      null: false
     t.float    "apr"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "goals", force: true do |t|
-    t.integer  "user_id",              null: false
-    t.integer  "cash_account_id",      null: false
-    t.string   "name",                 null: false
-    t.float    "amount",               null: false
-    t.float    "monthly_contribution", null: false
-    t.date     "planned_date",         null: false
+    t.integer  "user_id",                    null: false
+    t.integer  "cash_account_id",            null: false
+    t.string   "name",                       null: false
+    t.integer  "amount_cents",               null: false
+    t.integer  "monthly_contribution_cents", null: false
+    t.date     "planned_date",               null: false
     t.date     "projected_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "loan_accounts", force: true do |t|
-    t.string   "name",            null: false
-    t.integer  "company_id",      null: false
-    t.float    "balance",         null: false
-    t.float    "minimum_payment", null: false
+    t.string   "name",                  null: false
+    t.integer  "company_id",            null: false
+    t.integer  "balance_cents",         null: false
+    t.integer  "minimum_payment_cents", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20140426212710) do
   create_table "transactions", force: true do |t|
     t.integer  "transactionable_id"
     t.string   "transactionable_type"
-    t.float    "amount",               null: false
+    t.integer  "amount_cents",         null: false
     t.date     "date"
     t.string   "description"
     t.datetime "created_at"

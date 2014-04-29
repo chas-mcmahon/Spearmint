@@ -1,5 +1,6 @@
 class CashAccount < ActiveRecord::Base
-  validates :name, :company_id, :balance, presence: true
+  include MoneyHelper
+  validates :name, :company_id, :balance_cents, presence: true
 
   belongs_to :company
   has_one :goal
@@ -9,16 +10,16 @@ class CashAccount < ActiveRecord::Base
   def update_balance
     self.transactions.each do |transaction|
       if transaction.transaction_type == "debit"
-       self.balance -= transaction.amount
+       self.balance_cents -= transaction.amount_cents
       else
-       self.balance += transaction.amount
+       self.balance_cents += transaction.amount_cents
       end
     end
-    self.balance
+    self.balance_cents
   end
 
-  def available_credit
-    self.total_credit - self.balance
+  def get_balance_dollars
+    convert_cents(self.balance_cents)
   end
 
 end
