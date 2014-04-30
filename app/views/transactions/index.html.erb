@@ -1,7 +1,11 @@
 <div class="transaction-main-content group">
   <% if @transactions.length > 0 %>
   <div class="transactions">
-    <h2>Transactions</h2>
+    <!-- <div class="transactions-header group"> -->
+      <h2>Transactions</h2>
+      <div class="button"><a href="<%= new_transaction_url %>">
+          <button>Add Transaction</button></a></div>
+    <!-- </div> -->
     <table class="transactions-table">
       <thead>
         <th>Date</th>

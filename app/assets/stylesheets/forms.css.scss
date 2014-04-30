@@ -3,7 +3,8 @@ input[type="email"],
 input[type="password"],
 input[type="submit"],
 input[type="number"],
-input[type="date"] {
+input[type="date"],
+button {
   -webkit-appearance: none;
   box-sizing: content-box;
   display: inline-block;
@@ -97,5 +98,23 @@ input[type="date"] {
   background-color: #080;
 }
 
+//PROBABLY SHOULD COME UP WITH BETTER NAME FOR BUTTON WRAPPER
+.button {
+  padding: 10px 0;
+}
 
+.button button {
+  position: relative;
+  display: inline-block;
+  background-color: #090;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 3px;
+  box-shadow: 0 3px 0 0 #080;
+}
 
+.button  button:active {
+  top: 3px;
+  box-shadow: none;
+  background-color: #080;
+}

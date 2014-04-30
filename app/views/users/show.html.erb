@@ -44,12 +44,17 @@
               </ul>
             <% end %>
 
-    <!-- RENDER ACCOUNT FORMS (need to send in company object)-->
+            <div class="button"><a href="<%= edit_company_url(company) %>">
+             <button>Edit Company</button></a></div>
 
           </li>
         <% end %>
       </ul>
     <% end %>
+
+    <div class="button"><a href="<%= new_user_company_url(current_user) %>">
+     <button>Add Company</button></a></div>
+
   </div>
 
 

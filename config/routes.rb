@@ -5,10 +5,10 @@ Spearmint::Application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
 
   resources :users, only: [:new, :create, :show] do
-    resources :companies, only: [:create]
+    resources :companies, only: [:new, :create]
   end
 
-  resources :companies, only: [:destroy] do
+  resources :companies, only: [:edit, :update, :destroy] do
     resources :cash_accounts, only: [:create]
     resources :credit_accounts, only: [:create]
     resources :loan_accounts, only: [:create]
@@ -18,7 +18,7 @@ Spearmint::Application.routes.draw do
   resources :credit_accounts, only: [:destroy]
   resources :loan_accounts, only: [:destroy]
 
-  resources :transactions, only: [:index, :create, :destroy]
+  resources :transactions, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :budgets, only: [:index, :create, :destroy]
   resources :goals, only: [:index, :create, :destroy]
 

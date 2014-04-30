@@ -1,0 +1,21 @@
+<% action_url = (action == :new) ? user_companies_url(current_user) : company_url %>
+<% button_name = (action == :new) ? "Add Company" : "Update Company" %>
+
+<form action="<%= action_url %>" method="post">
+  <%= auth_token %>
+
+  <% if action != :new %>
+    <%= update_method_input %>
+  <% end %>
+
+  <div class="input"><label for="company-name">Name</label><input type="text" name="company[name]" value="<%= @company.name %>" id="company-name"></div>
+
+  <div class="input"><label for="company-host-url">Host Url</label><input type="text" name="company[host_url]" value="<%= @company.host_url %>" id="company-host-url"></div>
+
+  <div class="input"><label for="company-sign-in-url">Sign In Url</label><input type="text" name="company[host_url]" value="<%= @company.sign_in_url %>" id="company-sign-in-url"></div>
+
+
+  <input type="hidden" name="company[date_added]" value="<%= Date.today %>">
+
+  <div class="submit"><input type="submit" value="<%= button_name %>"></div>
+</form>

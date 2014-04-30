@@ -1,0 +1,18 @@
+<h1>Edit Company</h1>
+
+<%= render "./forms/company_form", action: :edit %>
+
+<form action="<%= company_url(@company) %>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="_method" value="delete">
+  <div class="submit">
+    <input type="submit" value="Delete Company">
+  </div>
+</form>
+
+<!-- RENDER ACCOUNT FORMS (need to send in company object)
+THESE ALSO BELONG IN THE COMPANY EDIT PAGE -->
+<%= render "./forms/cash_account_form", company: @company %>
+<%= render "./forms/credit_account_form", company: @company %>
+<%= render "./forms/loan_account_form", company: @company %>
+

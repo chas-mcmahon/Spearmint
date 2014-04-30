@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    # probably should just use current_user in view (for benefit of redirects)
     @companies = @user.companies
     @budgets = @user.budgets
     @goals = @user.goals
