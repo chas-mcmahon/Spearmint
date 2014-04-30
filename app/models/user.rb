@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :credit_accounts, through: :companies, source: :credit_accounts
   has_many :loan_accounts, through: :companies, source: :loan_accounts
 
+  has_many :categories
   has_many :budgets
   has_many :goals
   has_many :transactions

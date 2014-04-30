@@ -1,6 +1,9 @@
 <% if @goals.length > 0 %>
   <div class="goal-main-content">
     <h2>Goals</h2>
+
+        <div class="button"><a href="<%= new_goal_url %>"><button>Add Goal</button></a></div>
+
     <ul>
       <% @goals.each do |goal| %>
         <li>
@@ -27,8 +30,8 @@
             </div>
 
             <div class="goal-buttons">
-              <button>Edit</button>
-              <button>Delete</button>
+              <div class="button"><a href="<%= edit_goal_url(goal) %>">
+                <button>Edit</button></a></div>
             </div>
 
           </div>
@@ -38,4 +41,4 @@
   </div>
 <% end %>
 
-<%= render "./forms/goal_form" %>
+

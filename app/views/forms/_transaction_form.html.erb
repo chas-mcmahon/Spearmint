@@ -1,24 +1,33 @@
 <!-- move this to another backbone controlled dialogue -->
+
+<% action_url = (action == :new) ? transactions_url : transaction_url %>
+<% button_name = (action == :new) ? "Add Transaction" : "Update Transaction" %>
+
 <div class="form transactions-form">
-  <form action="<%= transactions_url %>" method="post">
+  <form action="<%= action_url %>" method="post">
     <%= auth_token %>
 
+    <% if action == :edit %>
+      <%= update_method_input %>
+    <% end %>
+
     <div class="input"><label for="transaction-amount">Amount</label>
-    <input type="number" step=".01" min=".01" name="transaction[amount_cents]" id="transaction-amount">
+    <input type="number" step=".01" min=".01" name="transaction[amount_cents]" value="<%= transaction.amount_cents %>" id="transaction-amount">
     </div>
 
     <div class="input"><label for="transaction-date">Date</label>
-    <input type="date" name="transaction[date]" id="transaction-date">
+    <input type="date" name="transaction[date]" value="<%= transaction.date %>" id="transaction-date">
     </div>
 
     <div class="input"><label for="transaction-description">Description</label>
-    <input type="text" name="transaction[description]" id="transaction=description">
+    <input type="text" name="transaction[description]" value="<%= transaction.description %>" id="transaction=description">
     </div>
 
     <!-- best practice: class matches tag? -->
+    <!-- ADD DEFAULT VALUES TO SELECT AND RADIO, LOOK THIS UP -->
     <div class="select"><label for="transaction-category">Category</label>
     <select name="transaction[category_id]" id="transaction-category">
-      <% @categories.each do |category| %>
+      <% categories.each do |category| %>
       <option value="<%= category.id %>"><%= category.name %></option>
       <% end %>
     </select>
@@ -31,7 +40,7 @@
       <label for="transaction-credit">Income</label></div>
 
     <div class="submit">
-    <input type="submit" value="Add transaction">
+    <input type="submit" value="<%= button_name %>">
     </div>
   </form>
 </div>

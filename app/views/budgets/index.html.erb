@@ -1,20 +1,26 @@
 <% if @budgets.length > 0 %>
   <div class="budget-main-content">
   <h2>Budgets</h2>
+
+    <div class="button"><a href="<%= new_budget_url %>"><button>Add Budget</button></a></div>
+
     <ul>
+
       <% @budgets.each do |budget| %>
         <li>
           <div class="budget">
           <h3><%= budget.category.name %></h3>
           <!-- maybe turn these into spans wrapped in div to make it one line, depends on how the chart gem works out -->
-          <p>$<%= budget.calculate_expenditures %> of $<%= budget.amount_cents %></p>
+          <p><%= number_to_currency(budget.expenditure_dollars) %> of <%= number_to_currency(budget.get_amount_dollars) %></p>
           <!-- Add fancy bar here eventually! -->
-          <p>From <%= budget.start_date %> to <%= budget.end_date %>
+          <p>From <%= budget.start_date %> to <%= budget.end_date %></p>
+
+          <div class="button"><a href="<%= edit_budget_url(budget) %>"><button>Edit Budget</button></a></div>
+
           </div>
         </li>
       <% end %>
+
     </ul>
   </div>
 <% end %>
-
-<%= render "./forms/budget_form" %>

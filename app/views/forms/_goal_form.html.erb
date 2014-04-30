@@ -1,25 +1,32 @@
+<% action_url = (action == :new) ? budgets_url : budget_url %>
+<% button_name = (action == :new) ? "Add Goal" : "Update Goal" %>
+
 <div class="form">
-  <form action="<%= goals_url %>" method="post">
+  <form action="<%= action_url %>" method="post">
     <%= auth_token %>
+
+    <% if action == :edit %>
+      <%= update_method_input %>
+    <% end %>
 
     <div class="input">
       <label for="goal-name">Name</label>
-      <input type="text" name="goal[name]" id="goal-name">
+      <input type="text" name="goal[name]" value="<%= goal.name %>" id="goal-name">
     </div>
 
     <div class="input">
       <label for="goal-amount">Amount</label>
-      <input type="number" step=".01" min="1" name="goal[amount_cents]" id="goal-amount">
+      <input type="number" step=".01" min="1" name="goal[amount_cents]" value="<%= goal.amount_cents %>" id="goal-amount">
     </div>
 
     <div class="input">
       <label for="goal-monthly-contribution">Monthly Contribution</label>
-      <input type="number" step=".01" min="1" name="goal[monthly_contribution_cents]" id="goal-monthly-contribution">
+      <input type="number" step=".01" min="1" name="goal[monthly_contribution_cents]" value="<%= goal.monthly_contribution_cents %>" id="goal-monthly-contribution">
     </div>
 
     <div class="input">
       <label for="goal-planned-date">Planned Date</label>
-      <input type="date" name="goal[planned_date]" id="goal-planned-date">
+      <input type="date" name="goal[planned_date]" value="<%= goal.planned_date %>" id="goal-planned-date">
     </div>
 
 
@@ -37,7 +44,7 @@
     </div>
 
     <div class="submit">
-      <input type="submit" value="Add Goal">
+      <input type="submit" value="<%= button_name %>">
     </div>
   </form>
 </div>

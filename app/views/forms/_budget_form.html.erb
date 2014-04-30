@@ -1,28 +1,38 @@
+<% action_url = (action == :new) ? budgets_url : budget_url %>
+<% button_name = (action == :new) ? "Add Budget" : "Update Budget" %>
+
 <div class="form">
   <form action="<%= budgets_url %>" method="post">
     <%= auth_token %>
 
-    <!-- <div class="select">
-      <label for="budget-category">Category</label>
-      <select id="budget-category">
-        <option>
-      </select>
-    </div> -->
+    <% if action == :edit %>
+      <%= update_method_input %>
+    <% end %>
 
     <div class="input">
     <label for="budget-amount">Amount</label>
-    <input type="number" min="1" name="budget[amount_cents]" id="budget-amount">
+    <input type="number" min="1" name="budget[amount_cents]" value="<%= budget.amount_cents %>" id="budget-amount">
     </div>
 
     <!-- should automate the dates (should have monthly interval and start at the beginning of the current month)-->
+
+    <div class="select">
+      <label for="budget-category">Category</label>
+      <select id="budget-category">
+        <% categories.each do |category| %>
+          <option value="<%= category.id %>"><%= category.name %></option>
+        <% end %>
+      </select>
+    </div>
+
     <div class="input">
     <label for="budget-start-date">Start</label>
-    <input type="date" name="budget[start_date]" id="budget-start-date">
+    <input type="date" name="budget[start_date]" value="<%= budget.start_date %>" id="budget-start-date">
     </div>
 
     <div class="input">
     <label fore="budget-end-date">End</label>
-    <input type="date" name="budget[end_date]" id="budget-end-date">
+    <input type="date" name="budget[end_date]" value="<%= budget.end_date %>" id="budget-end-date">
     </div>
 
     <div class="submit">

@@ -4,6 +4,10 @@ class GoalsController < ApplicationController
     @goals = current_user.goals
   end
 
+  def new
+    @goal = Goal.new
+  end
+
   def create
     @goal = current_user.goals.new(goal_params)
     if @goal.save
@@ -11,6 +15,20 @@ class GoalsController < ApplicationController
     else
       flash[:errors] = @goal.errors.full_messages
       redirect_to goals_url
+    end
+  end
+
+  def edit
+    @goal = Goal.find(params[:id])
+  end
+
+  def update
+    @goal = Goal.find(params[:id])
+    if @goal.update(goal_params)
+      redirect_to goals_url
+    else
+      flash.now[:errors] = @goal.errors.full_messages
+      render :edit
     end
   end
 

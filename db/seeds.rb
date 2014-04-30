@@ -104,15 +104,18 @@ Goal.create({
 })
 
 Category.create({
-  name: "Food"
+  name: "Food",
+  user_id: 1
 })
 
 Category.create({
-  name: "Trasportation"
+  name: "Trasportation",
+  user_id: 1
 })
 
 Category.create({
-  name: "Rent"
+  name: "Rent",
+  user_id: 1
 })
 
 CashAccount.first.transactions.create({

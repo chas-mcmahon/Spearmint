@@ -21,7 +21,7 @@ class CompaniesController < ApplicationController
 
   def update
     @company = Company.find(params[:id])
-    if @company.update
+    if @company.update(company_params)
       redirect_to user_url(current_user)
     else
       flash.now[:errors] = @company.errors.full_messages

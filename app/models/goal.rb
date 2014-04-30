@@ -10,7 +10,7 @@ class Goal < ActiveRecord::Base
             :monthly_contribution_cents,
             :planned_date,
             presence: true
-  before_validation :check_account_open
+  before_validation :check_for_open_account
   after_validation :update_projected_date
 
   def update_projected_date

@@ -25,6 +25,11 @@
           <% end %>
           <%= number_to_currency(transaction.get_dollars) %>
         </td>
+        <td>
+          <div class="button">
+            <a href="<%= edit_transaction_url(transaction) %>">
+           <button>Edit Transaction</button></a></div>
+        </td>
       </tr>
     <% end %>
       </tbody>
@@ -34,5 +39,3 @@
     <p>You have no transactions!</p>
   <% end %>
 </div>
-
-<%= render "./forms/transaction_form", :categories => @categories %>
