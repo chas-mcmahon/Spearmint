@@ -27,6 +27,9 @@ class User < ActiveRecord::Base
     @user && @user.is_password?(secret) ? @user : nil
   end
 
+  # def initialize
+  # end
+
   #make sure this logic is ok
   def make_activation_token
     until self.activation_token != nil && !!User.includes(self.activation_token)

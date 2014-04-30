@@ -1,7 +1,6 @@
 Spearmint.Collections.Transactions = Backbone.Collection.extend({
 
-  model: Spearmint.Models.Transaction
-  // url:
-
+  model: Spearmint.Models.Transaction,
+  url: "/api/transactions"
 
 });

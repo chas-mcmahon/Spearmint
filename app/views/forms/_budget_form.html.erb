@@ -2,7 +2,7 @@
 <% button_name = (action == :new) ? "Add Budget" : "Update Budget" %>
 
 <div class="form">
-  <form action="<%= budgets_url %>" method="post">
+  <form action="<%= action_url %>" method="post">
     <%= auth_token %>
 
     <% if action == :edit %>
@@ -16,9 +16,10 @@
 
     <!-- should automate the dates (should have monthly interval and start at the beginning of the current month)-->
 
+    <!-- GIVE DEFAULT VALUE TO SELECT TAG -->
     <div class="select">
       <label for="budget-category">Category</label>
-      <select id="budget-category">
+      <select id="budget-category" name="budget[category_id]">
         <% categories.each do |category| %>
           <option value="<%= category.id %>"><%= category.name %></option>
         <% end %>
@@ -36,7 +37,7 @@
     </div>
 
     <div class="submit">
-    <input type="submit" value="Add Budget">
+    <input type="submit" value="<%= button_name %>">
     </div>
   </form>
 </div>

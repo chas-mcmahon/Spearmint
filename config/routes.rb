@@ -26,7 +26,7 @@ Spearmint::Application.routes.draw do
 
 
   namespace :api, defaults: { format: :json } do
-
+    resources :transactions
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
