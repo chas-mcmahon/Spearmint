@@ -1,3 +1,11 @@
 <h2>Edit Transaction</h2>
 
 <%= render "./forms/transaction_form", transaction: @transaction, categories: @categories, action: :edit %>
+
+<form action="<%= transaction_url(@transaction) %>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="_method" value="delete">
+  <div class="submit">
+    <input type="submit" value="Delete Transaction">
+  </div>
+</form>
