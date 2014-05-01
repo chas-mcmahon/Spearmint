@@ -3,7 +3,7 @@ Spearmint.Views.TransactionsIndex = Backbone.View.extend({
   template: JST['transactions/index'],
 
   events: {
-
+    //eventually to have clickable things on transaction page to reset filter?
   },
 
   initialize: function () {

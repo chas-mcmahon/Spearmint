@@ -8,31 +8,54 @@
       <% @goals.each do |goal| %>
         <li>
           <div class="goal">
-
-            <div class="goal-list">
+            <!-- PUT BAR GRAPH HERE, FLOAT IT LEFT OF THE LIST -->
+            <div class="goal-attr-list">
+              <h3><%= goal.name %></h3>
               <ul>
-                <li><%= goal.name %></li>
-                <li>Account: <%= goal.cash_account.name %></li>
-                <li>Amount: <%= number_to_currency(goal.get_amount_dollars) %>
+                <li>
+                  <span class="goal-attr-key">Account:</span>
+                  <span class="goal-attr-val">
+                    <%= goal.cash_account.name %>
+                  </span>
+                </li>
+                <li>
+                  <span class="goal-attr-key">Amount:</span>
+                  <span class="goal-attr-val">
+                    <%= number_to_currency(goal.get_amount_dollars) %>
+                  </span>
+                </li>
 
-                <li> Balance:
+                <li>
+                  <span class="goal-attr-key">Balance:</span>
+                  <span class="goal-attr-val">
                 <%= number_to_currency(goal.cash_account.get_balance_dollars) %>
+                  </span>
                 </li>
 
-                <li> Contribution:
-                  <%= number_to_currency(goal.get_contribution_dollars) %>
+                <li>
+                  <span class="goal-attr-key">Contribution:</span>
+                  <span class="goal-attr-val">
+                    <%= number_to_currency(goal.get_contribution_dollars) %>
+                  </span>
+                </li>
+                <!-- DO SOMETHING TO MAKE THE DATES LOOK NICER, CHECK RAILS API -->
+                <li>
+                  <span class="goal-attr-key">Planned Date:</span>
+                  <span class="goal-attr-val"><%= goal.planned_date %></span>
                 </li>
 
-                <li>Planned Date: <%= goal.planned_date %></li>
-
-                <li>Projected Date: <%= goal.projected_date %></li>
+                <li>
+                  <span class="goal-attr-key">Projected Date:</span>
+                  <span class="goal-attr-val"><%= goal.projected_date %></span>
+                </li>
               </ul>
-            </div>
-
             <div class="goal-buttons">
               <div class="button"><a href="<%= edit_goal_url(goal) %>">
                 <button>Edit</button></a></div>
             </div>
+          </div>
+
+
 
           </div>
         </li>
