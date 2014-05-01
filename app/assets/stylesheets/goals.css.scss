@@ -7,6 +7,7 @@
   margin: auto;
   width: 600px;
   border-radius: 3px;
+  padding: 20px;
 }
 
 //this is the list el that contains a full goal
@@ -14,15 +15,35 @@
 
 }
 
-//this is the div inside that list el
 .goal {
   margin: auto;
-  padding:10px;
+  margin: 20px 0;
+  background-color: #ddd;
 }
 
-//this is the div that contains the attrs
+.goal > h3 {
+  padding: 10px;
+}
+
+.goal-meter {
+  -webkit-appearance: none;
+  width: 500px;
+  margin: 0 50px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+.goal-meter::-webkit-meter-bar {
+  background: none;
+  background-color: #eee;
+  box-shadow: 0 5px 5px -5px #333 inset;
+}
+
+.goal .button {
+  padding: 10px 0px 13px 20px;
+}
+
 .goal-attr-list {
-  background-color: #ddd;
   border-radius: 3px;
   padding: 20px;
 }
@@ -34,7 +55,7 @@
 }
 
 .goal-attr-list li:first-child {
-  border-top-left-radius: 3px ;
+  border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }
 

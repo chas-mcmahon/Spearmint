@@ -3,7 +3,11 @@ class TransactionsController < ApplicationController
   #implement pagination of transactions
   def index
     @transactions = current_user.transactions
-    @categories = current_user.categories
+
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @transactions }
+    end
   end
 
   def new

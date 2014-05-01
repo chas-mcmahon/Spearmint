@@ -2,15 +2,23 @@
   <div class="goal-main-content">
     <h2>Goals</h2>
 
-        <div class="button"><a href="<%= new_goal_url %>"><button>Add Goal</button></a></div>
+    <div class="button"><a href="<%= new_goal_url %>"><button>Add Goal</button></a></div>
 
     <ul>
       <% @goals.each do |goal| %>
         <li>
           <div class="goal">
-            <!-- PUT BAR GRAPH HERE, FLOAT IT LEFT OF THE LIST -->
+
+            <h3><%= goal.name %></h3>
+
+            <meter class="goal-meter"
+                   max="<%= goal.amount_cents %>"
+                   low="<%= goal.amount_cents * 0.75 %>"
+                   high="<%= goal.amount_cents %>"
+                   optimum="<%= goal.amount_cents * 0.5 %>"
+                   value="<%= goal.cash_account.balance_cents %>"></meter>
+
             <div class="goal-attr-list">
-              <h3><%= goal.name %></h3>
               <ul>
                 <li>
                   <span class="goal-attr-key">Account:</span>
@@ -49,13 +57,13 @@
                   <span class="goal-attr-val"><%= goal.projected_date %></span>
                 </li>
               </ul>
-            <div class="goal-buttons">
-              <div class="button"><a href="<%= edit_goal_url(goal) %>">
-                <button>Edit</button></a></div>
-            </div>
           </div>
 
-
+          <div class="button">
+            <a href="<%= edit_goal_url(goal) %>">
+              <button>Edit</button>
+            </a>
+          </div>
 
           </div>
         </li>

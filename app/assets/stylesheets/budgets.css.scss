@@ -6,6 +6,7 @@
   width: 600px;
   background-color: #eee;
   margin: auto;
+  padding: 20px;
 }
 
 .budget-main-content > ul {
@@ -13,13 +14,39 @@
 }
 
 .budget {
-
+  background-color: #ddd;
+  border-radius: 3px;
+  margin: 20px 0;
 }
 
 .budget > h3 {
-
+  padding: 10px;
 }
 
-.budget > p {
+.budget-info > p:first-child {
+  float: left;
+  padding-left: 50px;
+}
 
+.budget-info > p:last-child {
+  float: right;
+  padding-right: 50px;
+}
+
+.budget-meter {
+  -webkit-appearance: none;
+  width: 500px;
+  margin: 0 50px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+.budget-meter::-webkit-meter-bar {
+  background: none;
+  background-color: #eee;
+  box-shadow: 0 5px 5px -5px #333 inset;
+}
+
+.budget .button {
+  padding: 10px 0 13px 50px;
 }

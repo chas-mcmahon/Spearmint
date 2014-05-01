@@ -154,6 +154,7 @@ DEPENDENCIES
   debugger
   jbuilder (~> 1.2)
   jquery-rails
+  json
   letter_opener
   pg
   rails (= 4.0.3)

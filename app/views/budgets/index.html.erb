@@ -5,22 +5,32 @@
     <div class="button"><a href="<%= new_budget_url %>"><button>Add Budget</button></a></div>
 
     <ul>
-
       <% @budgets.each do |budget| %>
+
         <li>
           <div class="budget">
           <h3><%= budget.category.name %></h3>
           <!-- maybe turn these into spans wrapped in div to make it one line, depends on how the chart gem works out -->
+
+          <div class="budget-info group">
           <p><%= number_to_currency(budget.expenditure_dollars) %> of <%= number_to_currency(budget.get_amount_dollars) %></p>
-          <!-- Add fancy bar here eventually! -->
-          <p>From <%= budget.start_date %> to <%= budget.end_date %></p>
+          <p>From <%= budget.start_date.strftime("%b %-d") %>
+             to <%= budget.end_date.strftime("%b %-d") %></p>
+          </div>
+
+          <meter class="budget-meter"
+                 max="<%= budget.amount_cents %>"
+                 low="<%= budget.amount_cents * 0.75 %>"
+                 high="<%= budget.amount_cents %>"
+                 optimum="<%= budget.amount_cents * 0.5 %>"
+                 value="<%= budget.calculate_expenditures %>"></meter>
 
           <div class="button"><a href="<%= edit_budget_url(budget) %>"><button>Edit Budget</button></a></div>
 
           </div>
         </li>
-      <% end %>
 
+      <% end %>
     </ul>
   </div>
 <% end %>

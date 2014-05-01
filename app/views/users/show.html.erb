@@ -80,7 +80,7 @@
               <td>
                 <% left = budget.amount_left_dollars %>
                 <% if left < 0 %>
-                  <span><%= number_to_currency(left) %></span>
+                  <span>&#x2212<%= number_to_currency(left.abs) %></span>
                 <% else %>
                   <span><%= number_to_currency(left) %> left</span>
                 <% end %>

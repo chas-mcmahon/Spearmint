@@ -110,8 +110,13 @@ input[type="date"] {
   color: #fff;
   padding: 5px 10px;
   border-radius: 3px;
-  box-shadow: 0 3px 0 0 #080;
+  box-shadow: 0 3px 0 0 #0a0;
 }
+
+.button button:hover {
+  background-color: #080;
+}
+
 
 .button  button:active {
   top: 3px;

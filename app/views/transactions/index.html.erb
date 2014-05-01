@@ -1,11 +1,13 @@
 <div class="transaction-main-content group">
   <% if @transactions.length > 0 %>
   <div class="transactions">
+
     <!-- <div class="transactions-header group"> -->
-      <h2>Transactions</h2>
-      <div class="button"><a href="<%= new_transaction_url %>">
-          <button>Add Transaction</button></a></div>
+    <h2>Transactions</h2>
+    <div class="button"><a href="<%= new_transaction_url %>">
+        <button>Add Transaction</button></a></div>
     <!-- </div> -->
+
     <table class="transactions-table">
       <thead>
         <th>Date</th>
@@ -16,12 +18,12 @@
       <tbody>
     <% @transactions.each do |transaction| %>
       <tr>
-        <td><%= transaction.date %></td>
+        <td><%= transaction.date.strftime("%b %-d") %></td>
         <td><%= transaction.description %></td>
         <td><%= transaction.category.name %></td>
         <td class="amount-cell">
           <% if transaction.transaction_type == "debit" %>
-            -
+            &#x2212
           <% end %>
           <%= number_to_currency(transaction.get_dollars) %>
         </td>
@@ -39,3 +41,28 @@
     <p>You have no transactions!</p>
   <% end %>
 </div>
+
+<script type="application/json" id="transactions-json">
+ <%= @posts.to_json.html_safe %>
+</script>
+
+<script>
+  $(document).ready(function(){
+  var transactionsJSON = JSON.parse($("#transactions-json").html());
+  Spearmint.initialize(transactionsJSON, $(""));
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

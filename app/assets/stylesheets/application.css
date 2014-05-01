@@ -13,7 +13,7 @@
 
 /*----- RESET AND GENERAL STYLING -----*/
 
-html, body, nav, a, header, ul, li, h1, div, label {
+html, body, nav, a, header, ul, li, h1, h2, h3, h4, div, label {
   margin: 0;
   border: 0;
   padding: 0;
@@ -28,6 +28,15 @@ body {
 h2 {
   display: block;
   margin: auto;
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h4 {
+  font-size: 16px;
 }
 
 li {
@@ -51,7 +60,7 @@ input[type="submit"] {
 /*----- NAVBAR STYLING ------*/
 
 h1 {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: bold;
   color: white;
 }
@@ -80,7 +89,15 @@ h1 {
 /*need to push down everything but the button, but how???*/
 .navbar-list > li {
   float: left;
-  padding: 10px 15px;
+}
+
+.navbar-list > li > a {
+  padding: 17px 15px;
+}
+
+.navbar-list > li > a:hover {
+  background-color: #0a0;
+  cursor: pointer;
 }
 
 .navbar-list > li > a {
@@ -89,17 +106,22 @@ h1 {
 /*  padding: 15px 20px;*/
 }
 
-.navbar-list:last-child {
+.navbar-list > li:last-child {
+  padding: 12px 15px;
+}
 
+.navbar-list > li:last-child:hover {
+  background-color: #090;
 }
 
 #sign-out-button {
   padding: 5px;
   position: relative;
-  background: orange;
+  background: #f90;
   display: inline-block;
   color: #fff;
-  box-shadow: 0 3px 0 0 #cc9;
+  box-shadow: 0 3px 0 0 #eda;
+/*  #cc9*/
   border-radius: 3px;
 }
 
@@ -110,7 +132,7 @@ h1 {
 #sign-out-button:active {
   top: 3px;
   box-shadow: none;
-  background: #f90;
+  background: #f80;
 }
 
 /*.submit > input {
