@@ -1,19 +1,18 @@
 Spearmint.Routers.TransactionsRouter = Backbone.Router.extend({
 
-  intialize: function (options) {
+  initialize: function (options) {
     this.transactions = options.transactions;
     this.$rootEl = options.$rootEl;
-    console.log("initialized")
   },
 
   routes: {
-    "api/transactions" : "index",
-    "api/transactions/new" : "new",
-    "api/transactions/:id" : "edit",
-    "api/transactions/:id" : "destroy"
+    "" : "index",
+    "new" : "new",
+    ":id/edit" : "edit"
   },
 
   index: function () {
+    // console.log("made it to index route");
     var indexView = new Spearmint.Views.TransactionsIndex({
       collection: this.transactions
     });
@@ -22,24 +21,23 @@ Spearmint.Routers.TransactionsRouter = Backbone.Router.extend({
   },
 
   new: function () {
-    var formView = new Spearmint.Views.TransactionsForm({
-      collection: this.transactions
-      model: new Spearmint.Models.Transaction ()
+    var formView = new Spearmint.Views.TransactionForm({
+      collection: this.transactions,
+      model: new Spearmint.Models.Transaction()
     });
 
     return this._swapView(formView)
   },
 
   edit: function (id) {
-    var formView = new Spearmint.Views.TransactionsForm({
+    var formView = new Spearmint.Views.TransactionForm({
       model: this.transactions.get(id)
     });
+
+    return this._swapView(formView)
   },
 
-  destroy: function (id) {
-  },
-
-  _swapView: function () {
+  _swapView: function (view) {
     this._currentView && this._currentView.remove();
     this._currentView = view;
     this.$rootEl.html(view.render().$el);

@@ -1,0 +1,14 @@
+<div class="transaction-main-content group">
+
+</div>
+
+<script type="application/json" id="transactions-json">
+  <%= @transactions.to_json.html_safe %>
+</script>
+
+<script>
+  $(document).ready(function(){
+  var transactionsJSON = JSON.parse($("#transactions-json").html());
+  Spearmint.initialize(transactionsJSON, $(".transaction-main-content"));
+  });
+</script>

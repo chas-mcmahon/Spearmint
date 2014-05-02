@@ -1,0 +1,37 @@
+<div class="transactions">
+
+  <!-- <div class="transactions-header group"> -->
+  <h2>Transactions</h2>
+  <div class="button"><a href="#/new">
+      <button>Add Transaction</button></a></div>
+  <!-- </div> -->
+
+  <table class="transactions-table">
+    <thead>
+      <th>Date</th>
+      <th>Description</th>
+      <th>Category</th>
+      <th>Amount</th>
+    </thead>
+    <tbody>
+  <% transactions.each(function(transaction){ %>
+    <tr>
+      <td><%= transaction.escape('date') %></td>
+      <td><%= transaction.escape('description') %></td>
+      <td>Category goes here</td>
+      <td class="amount-cell">
+        <% if (transaction.transaction_type == "debit") { %>
+          &#x2212
+        <% } %>
+        <%= transaction.escape('amount_cents') %>
+      </td>
+      <td>
+        <div class="button">
+          <a href="#/<%= transaction.id %>/edit">
+         <button>Edit Transaction</button></a></div>
+      </td>
+    </tr>
+  <% }); %>
+    </tbody>
+  </table>
+</div>

@@ -5,16 +5,14 @@ Spearmint.Models.Transaction = Backbone.Model.extend({
   // initialize: function () {
   // },
 
-  validate: function (attributes) {
-    if (!attributes) {
-      return "Missing transaction information";
-    }
-  },
+  // validate: function (attributes) {
+  //   if (!attributes) {
+  //     return "Missing transaction information";
+  //   }
+  // }
 
   parse: function (jsonResp) {
-    this.transactions = new Spearmint.Collections.Transactions(jsonResp.transactions);
-    delete jsonResp.transactions;
-    return jsonResp;
+
   }
 
 });

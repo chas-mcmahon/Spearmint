@@ -9,12 +9,14 @@
     <!-- </div> -->
 
     <table class="transactions-table">
+
       <thead>
         <th>Date</th>
         <th>Description</th>
         <th>Category</th>
         <th>Amount</th>
       </thead>
+
       <tbody>
     <% @transactions.each do |transaction| %>
       <tr>
@@ -35,6 +37,7 @@
       </tr>
     <% end %>
       </tbody>
+
     </table>
   </div>
   <% else %>
@@ -42,16 +45,7 @@
   <% end %>
 </div>
 
-<script type="application/json" id="transactions-json">
- <%= @posts.to_json.html_safe %>
-</script>
 
-<script>
-  $(document).ready(function(){
-  var transactionsJSON = JSON.parse($("#transactions-json").html());
-  Spearmint.initialize(transactionsJSON, $(".transactions"));
-  });
-</script>
 
 
 

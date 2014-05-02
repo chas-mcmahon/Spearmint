@@ -3,7 +3,7 @@ class Api::TransactionsController < ApplicationController
   before_action :require_sign_in!
 
   def index
-    @transactions = current_user.transactions
+    @transactions = current_user.transactions.includes(:category)
     render json: @transactions
   end
 

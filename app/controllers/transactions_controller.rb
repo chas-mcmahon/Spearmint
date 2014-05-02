@@ -2,12 +2,8 @@ class TransactionsController < ApplicationController
 
   #implement pagination of transactions
   def index
-    @transactions = current_user.transactions
-
-    respond_to do |format|
-      format.html { render :index }
-      format.json { render json: @transactions }
-    end
+    @transactions = current_user.transactions.includes(:category)
+    render :backbone_index
   end
 
   def new

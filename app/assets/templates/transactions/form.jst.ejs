@@ -1,0 +1,25 @@
+<input type="hidden" name="authenticity_token" value="#{form_authenticity_token}">
+
+<div class="input"><label for="transaction-amount">Amount</label>
+<input type="number" step=".01" min=".01" name="transaction[amount_cents]" value="<%= transaction.amount_cents %>" id="transaction-amount">
+</div>
+
+<div class="input"><label for="transaction-date">Date</label>
+<input type="date" name="transaction[date]" value="<%= transaction.date %>" id="transaction-date">
+</div>
+
+<div class="input"><label for="transaction-description">Description</label>
+<input type="text" name="transaction[description]" value="<%= transaction.description %>" id="transaction=description">
+</div>
+
+<!-- ADD BACK CATEGORY INPUT HERE -->
+
+<div class="input"><input type="radio" name="transaction[transaction_type]" value="debit" id="transaction-debit">
+  <label for="transaction-debit">Expenditure</label></div>
+
+<div class="input"><input type="radio" name="transaction[transaction_type]" value="credit" id="transaction-credit">
+  <label for="transaction-credit">Income</label></div>
+
+<div class="submit">
+<input type="submit" value="Submit">
+</div>

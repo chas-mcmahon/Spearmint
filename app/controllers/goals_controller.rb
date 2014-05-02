@@ -43,7 +43,7 @@ class GoalsController < ApplicationController
   def goal_params
     params.require(:goal).permit(
       :name,
-      :account_id,
+      :cash_account_id,
       :amount_cents,
       :monthly_contribution_cents,
       :planned_date)

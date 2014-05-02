@@ -157,6 +157,7 @@ h1 {
 .accounts {
   float: left;
   padding: 20px;
+  border-right: 1px solid #ccc;
 }
 
 .right-column {
@@ -166,6 +167,10 @@ h1 {
 .budgets {
   padding: 20px;
 /*  float: left;*/
+  border-bottom: 1px solid #ccc;
+}
+
+.budgets-table {
 }
 
 .goals {
