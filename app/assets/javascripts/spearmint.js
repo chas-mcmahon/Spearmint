@@ -3,14 +3,11 @@ window.Spearmint = {
   Collections: {},
   Views: {},
   Routers: {},
-  initialize: function() {
-    Spearmint.transactions = new Spearmint.Collections.Transactions();
+  initialize: function(transactionsJSON, $rootEl) {
+    Spearmint.transactions = new Spearmint.Collections.Transactions(transactionsJSON);
     new Spearmint.Routers.TransactionRouter({
-
-      //might need to be more specific about what I want $rootEl to be
-      $rootEl: $(".transaction-main-content"),
+      $rootEl: $rootEl,
       transactions: Spearmint.transactions
-
     })
     Backbone.history.start();
   }
