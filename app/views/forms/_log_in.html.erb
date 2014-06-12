@@ -20,8 +20,21 @@
 
 
     <div class="submit">
-    <input type="submit" value="<%= button_name %>">
+    <input type="submit" id="login-submission" value="<%= button_name %>">
     </div>
+
+    <% if action != :sign_up %>
+      <button id="guest-log-in">Guest Sign In</button>
+
+      <script>
+        var $guest = $("button#guest-log-in");
+        $guest.on("click", function() {
+          $("input#user-email").val("guest@example.com");
+          $("input#user-password").val("guestPassword");
+          $("#login-submission").trigger("click");
+        });
+      </script>
+    <% end %>
 
   </form>
 

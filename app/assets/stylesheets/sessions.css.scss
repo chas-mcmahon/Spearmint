@@ -33,3 +33,23 @@
 .alt-form > .submit {
   padding-top: 0px;
 }
+
+#guest-log-in {
+  padding: 5px;
+  position: relative;
+  background: #f90;
+  color: #fff;
+  box-shadow: 0 3px 0 0 #c70;
+//  eda
+  border-radius: 3px;
+}
+
+#guest-log-in:hover {
+  background: #f80;
+}
+
+#guest-log-in:active {
+  top: 3px;
+  box-shadow: none;
+  background: #f80;
+}

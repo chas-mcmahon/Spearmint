@@ -86,7 +86,6 @@ h1 {
   float: right;
 }
 
-/*need to push down everything but the button, but how???*/
 .navbar-list > li {
   float: left;
 }
@@ -122,6 +121,7 @@ h1 {
   color: #fff;
   box-shadow: 0 3px 0 0 #eda;
 /*  #cc9*/
+/*  #c70*/
   border-radius: 3px;
 }
 
