@@ -26,6 +26,7 @@
     <!-- best practice: class matches tag? -->
     <!-- ADD DEFAULT VALUES TO SELECT AND RADIO, LOOK THIS UP -->
     <div class="select"><label for="transaction-category">Category</label>
+    <!-- make current_user.categories.each -->
     <select name="transaction[category_id]" id="transaction-category">
       <% categories.each do |category| %>
       <option value="<%= category.id %>"><%= category.name %></option>

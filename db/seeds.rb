@@ -32,7 +32,7 @@ User.all.each do |user|
     date_added: start_date
   })
 
-  company1 = Company.where("name = 'TD'")
+  company1 = Company.where("name = 'TD'").first
 
   Company.create({
     name: "Chase",
@@ -42,7 +42,7 @@ User.all.each do |user|
     date_added: start_date
   })
 
-  company2 = Company.where("name = 'TD'")
+  company2 = Company.where("name = 'Chase'").first
 
   # -----Accounts------------
 
@@ -53,7 +53,7 @@ User.all.each do |user|
     apy: 0.00
   })
 
-  cash1 = CashAccount.where("name = 'TD Student Checking'")
+  cash1 = CashAccount.where("name = 'TD Student Checking'").first
 
   CashAccount.create({
     name: "TD Student Savings",
@@ -62,7 +62,7 @@ User.all.each do |user|
     apy: 0.01
   })
 
-  cash2 = CashAccount.where("name = 'TD Student Savings'")
+  cash2 = CashAccount.where("name = 'TD Student Savings'").first
 
   CreditAccount.create({
     name: "Credit Card",
@@ -72,7 +72,7 @@ User.all.each do |user|
     apr: 10
   })
 
-  credit1 = CreditAccount.where("name = 'Credit Card'")
+  credit1 = CreditAccount.where("name = 'Credit Card'").first
 
   #make new company and update company_id here
   LoanAccount.create({
@@ -109,91 +109,91 @@ User.all.each do |user|
     user_id: user.id
   })
 
-  cat1 = Category.where("name = 'Groceries'")
+  cat1 = Category.where({name: 'Groceries', user_id: user.id}).first
 
   Category.create({
     name: "Restaurants",
     user_id: user.id
   })
 
-  cat2 = Category.where("name = 'Restaurants'")
+  cat2 = Category.where({name: 'Restaurants', user_id: user.id}).first
 
   Category.create({
     name: "Home Supplies",
     user_id: user.id
   })
 
-  cat3 = Category.where("name = 'Home Supplies'")
+  cat3 = Category.where({name: 'Home Supplies', user_id: user.id}).first
 
   Category.create({
     name: "Pharmacy",
     user_id: user.id
   })
 
-  cat4 = Category.where("name = 'Pharmacy'")
+  cat4 = Category.where({name: 'Pharmacy', user_id: user.id}).first
 
   Category.create({
     name: "Laundry",
     user_id: user.id
   })
 
-  cat5 = Category.where("name = 'Laundry'")
+  cat5 = Category.where({name: 'Laundry', user_id: user.id}).first
 
   Category.create({
     name: "Entertainment",
     user_id: user.id
   })
 
-  cat6 = Category.where("name = 'Entertainment'")
+  cat6 = Category.where({name: 'Entertainment', user_id: user.id}).first
 
   Category.create({
     name: "Clothing",
     user_id: user.id
   })
 
-  cat7 = Category.where("name = 'Clothing'")
+  cat7 = Category.where({name: 'Clothing', user_id: user.id}).first
 
   Category.create({
     name: "Transportation",
     user_id: user.id
   })
 
-  cat8 = Category.where("name = 'Transportation'")
+  cat8 = Category.where({name: 'Transportation', user_id: user.id}).first
 
   Category.create({
     name: "Rent",
     user_id: user.id
   })
 
-  cat9 = Category.where("name = 'Rent'")
+  cat9 = Category.where({name: 'Rent', user_id: user.id}).first
 
   Category.create({
     name: "Utilities",
     user_id: user.id
   })
 
-  cat10 = Category.where("name = 'Utilities'")
+  cat10 = Category.where({name: 'Utilities', user_id: user.id}).first
 
   Category.create({
     name: "Loans",
     user_id: user.id
   })
 
-  cat11 = Category.where("name = 'Loans'")
+  cat11 = Category.where({name: 'Loans', user_id: user.id}).first
 
   Category.create({
     name: "Miscellaneous",
     user_id: user.id
   })
 
-  cat12 = Category.where("name = 'Miscellaneous'")
+  cat12 = Category.where({name: 'Miscellaneous', user_id: user.id}).first
 
   Category.create({
     name: "Paycheck",
     user_id: user.id
   })
 
-  cat13 = Category.where("name = 'Paycheck'")
+  cat13 = Category.where({name: 'Paycheck', user_id: user.id}).first
 
   # -------Budgets-----------
 
@@ -249,7 +249,7 @@ User.all.each do |user|
     transaction_params
   end
 
-  def make_transaction(options)
+  def make_transaction(options, user)
     account = Random.new.rand(2)
 
     if account == 1
@@ -282,48 +282,48 @@ User.all.each do |user|
     category_id: cat2.id
   })
 
-  month = 4
+  month = start_date.month
 
   # Groceries 1
   4.times do
     data = generate_transaction_data(7000, month, cat1.id, "Compare Foods")
-    make_transaction(data)
+    make_transaction(data, user)
   end
 
   #Restaurants 2
   15.times do
     data = generate_transaction_data(2500, month, cat2.id, "Restaurant Associates")
-    make_transaction(data)
+    make_transaction(data, user)
   end
 
   #Home Supplies 3
   2.times do
     data = generate_transaction_data(1800, month, cat3.id, "Target")
-    make_transaction(data)
+    make_transaction(data, user)
   end
 
   #Pharmacy 4
   15.times do
     data = generate_transaction_data(700, month, cat4.id, "Rite Aid")
-    make_transaction(data)
+    make_transaction(data, user)
   end
 
   #Laundry 5
   2.times do
     data = generate_transaction_data(2300, month, cat5.id, "Local Laundromat")
-    make_transaction(data)
+    make_transaction(data, user)
   end
 
   #Entertainment 6
   3.times do
     data = generate_transaction_data(3000, month, cat6.id, "Regal Entertainment")
-    make_transaction(data)
+    make_transaction(data, user)
   end
 
   #Clothing 7
   1.times do
     data = generate_transaction_data(8000, month, cat7.id, "Ann Taylor Loft")
-    make_transaction(data)
+    make_transaction(data, user)
   end
 
   #Transportation 8
@@ -353,11 +353,11 @@ User.all.each do |user|
   #Utilities 10
   1.times do
     data = generate_transaction_data(5500, month, cat10.id, "Con Edison")
-    make_transaction(data)
+    make_transaction(data, user)
   end
   2.times do
     data = generate_transaction_data(10000, month, cat10.id, "Verizon")
-    make_transaction(data)
+    make_transaction(data, user)
   end
   1.times do
     data = generate_transaction_data(7500, month, cat10.id, "Time Warner")
@@ -382,15 +382,16 @@ User.all.each do |user|
   #Miscellaneous 12
   12.times do
     data = generate_transaction_data(3000, month, cat12.id, "Daily Transaction")
-    make_transaction(data)
+    make_transaction(data, user)
   end
+
   # Paycheck 13
   pay_day = 5;
   2.times do
     CashAccount.first.transactions.create({
       amount_cents: 200000,
       transaction_type: "credit",
-      date: Date.new(2014, 4, pay_day),
+      date: Date.new(2014, month, pay_day),
       description: "Company Direct Deposit",
       user_id: user.id,
       category_id: cat13.id
