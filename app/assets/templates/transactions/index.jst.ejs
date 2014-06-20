@@ -18,7 +18,7 @@
     <tr>
       <td><%= transaction.escape('date') %></td>
       <td><%= transaction.escape('description') %></td>
-      <td>Category goes here</td>
+      <td>transaction.escape('category')</td>
       <td class="amount-cell">
         <% if (transaction.transaction_type == "debit") { %>
           &#x2212

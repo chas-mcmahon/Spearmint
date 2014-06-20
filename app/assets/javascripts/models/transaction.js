@@ -1,6 +1,14 @@
-Spearmint.Models.Transaction = Backbone.Model.extend({
-  // need parse function
+Spearmint.Models.Transaction = Backbone.RelationalModel.extend({
 
+  relations: [{
+    type: Backbone.HasOne,
+    key: 'category',
+    relatedModel: Spearmint.Models.Category,
+    collectionType: Spearmint.Collections.Categories,
+    reverseRelation: {
+      key: 'transactions',
+    }
+  }]
 
   // initialize: function () {
   // },
@@ -11,8 +19,8 @@ Spearmint.Models.Transaction = Backbone.Model.extend({
   //   }
   // }
 
-  parse: function (jsonResp) {
-
-  }
+  // parse: function (jsonResp) {
+  //
+  // }
 
 });

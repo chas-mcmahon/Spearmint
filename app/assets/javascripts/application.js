@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
+//= require backbone-relational
 //= require jquery.serializejson.min
 //= require spearmint
 //= require_tree ../templates

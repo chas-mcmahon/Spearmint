@@ -40,6 +40,8 @@ GEM
       ejs
       jquery-rails
       railties
+    backbone-relational-rails (0.8.8)
+      railties (>= 3.1)
     bcrypt (3.1.7)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
@@ -147,6 +149,7 @@ PLATFORMS
 
 DEPENDENCIES
   backbone-on-rails
+  backbone-relational-rails
   bcrypt
   better_errors
   binding_of_caller

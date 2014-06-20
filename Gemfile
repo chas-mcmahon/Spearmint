@@ -52,6 +52,7 @@ gem 'bcrypt'
 gem 'debugger', group: [:development, :test]
 
 gem 'backbone-on-rails'
+gem 'backbone-relational-rails'
 
 # gem 'money'
 # gem 'money-rails'
