@@ -28,6 +28,8 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'json'
 
+gem 'rails_12factor', group: :production
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
