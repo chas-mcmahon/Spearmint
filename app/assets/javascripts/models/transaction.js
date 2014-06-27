@@ -6,9 +6,16 @@ Spearmint.Models.Transaction = Backbone.RelationalModel.extend({
     relatedModel: Spearmint.Models.Category,
     collectionType: Spearmint.Collections.Categories,
     reverseRelation: {
-      key: 'transactions',
+      key: 'transactions'
+      // includeInJSON: 'id'
     }
   }]
+
+  // parse: function (jsonResp) {
+  //   if (jsonResp.category) {
+  //     this.category().set(jsonResp.category)
+  //   }
+  // }
 
   // initialize: function () {
   // },
@@ -17,10 +24,6 @@ Spearmint.Models.Transaction = Backbone.RelationalModel.extend({
   //   if (!attributes) {
   //     return "Missing transaction information";
   //   }
-  // }
-
-  // parse: function (jsonResp) {
-  //
   // }
 
 });

@@ -3,12 +3,15 @@
 </div>
 
 <script type="application/json" id="transactions-json">
-  <%= @transactions.to_json(includes: :category).html_safe %>
+  { "transactions": <%= @transactions.to_json.html_safe %>,
+  	"categories": <%= @categories.to_json.html_safe %>
+  }
 </script>
 
 <script>
   $(document).ready(function(){
   var transactionsJSON = JSON.parse($("#transactions-json").html());
+  // console.log(transactionsJSON);
   Spearmint.initialize(transactionsJSON, $(".transaction-main-content"));
   });
 </script>

@@ -2,6 +2,7 @@ Spearmint.Routers.TransactionsRouter = Backbone.Router.extend({
 
   initialize: function (options) {
     this.transactions = options.transactions;
+    this.categories = options.categories;
     this.$rootEl = options.$rootEl;
   },
 

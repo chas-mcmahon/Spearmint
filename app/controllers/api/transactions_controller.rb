@@ -3,8 +3,13 @@ class Api::TransactionsController < ApplicationController
   before_action :require_sign_in!
 
   def index
+    # @transactions = current_user.transactions.includes(:category)
+    # render json: @transactions.to_json(include: :category)
+
     @transactions = current_user.transactions.includes(:category)
-    render json: @transactions
+    @categories = current_user.categories
+    render json: {transactions: @transactions,
+                  categories: @categories}
   end
 
   def create
@@ -27,8 +32,8 @@ class Api::TransactionsController < ApplicationController
   end
 
   def destroy
-    @notebook = Notebook.find(params[:id])
-    @notebook.destroy!
+    @transaction = Transaction.find(params[:id])
+    @transaction.destroy!
     render json: {}
   end
 
