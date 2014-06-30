@@ -3,13 +3,13 @@ class Api::TransactionsController < ApplicationController
   before_action :require_sign_in!
 
   def index
-    # @transactions = current_user.transactions.includes(:category)
-    # render json: @transactions.to_json(include: :category)
-
     @transactions = current_user.transactions.includes(:category)
-    @categories = current_user.categories
-    render json: {transactions: @transactions,
-                  categories: @categories}
+    render json: @transactions.to_json(include: :category)
+
+    # @transactions = current_user.transactions.includes(:category)
+    # @categories = current_user.categories
+    # render json: {transactions: @transactions,
+    #               categories: @categories}
   end
 
   def create

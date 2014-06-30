@@ -2,7 +2,7 @@ Spearmint.Routers.TransactionsRouter = Backbone.Router.extend({
 
   initialize: function (options) {
     this.transactions = options.transactions;
-    this.categories = options.categories;
+    // this.categories = options.categories;
     this.$rootEl = options.$rootEl;
   },
 
@@ -15,7 +15,8 @@ Spearmint.Routers.TransactionsRouter = Backbone.Router.extend({
   index: function () {
     // console.log("made it to index route");
     var indexView = new Spearmint.Views.TransactionsIndex({
-      collection: this.transactions
+      collection: this.transactions,
+      // categories: this.categories
     });
 
     return this._swapView(indexView)

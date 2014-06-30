@@ -3,7 +3,7 @@ class TransactionsController < ApplicationController
   #implement pagination of transactions
   def index
     @transactions = current_user.transactions.includes(:category)
-    @categories = current_user.categories
+    # @categories = current_user.categories
     render :backbone_index
   end
 

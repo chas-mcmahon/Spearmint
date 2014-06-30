@@ -1,3 +1,3 @@
-Spearmint.Models.Category = Backbone.RelationalModel.extend({
+Spearmint.Models.Category = Backbone.Model.extend({
 
 });

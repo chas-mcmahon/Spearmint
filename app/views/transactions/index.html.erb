@@ -22,7 +22,7 @@
       <tr>
         <td><%= transaction.date.strftime("%b %-d") %></td>
         <td><%= transaction.description %></td>
-        <td><%= transaction.category.name %></td>
+        <td><%= transactin.category.name %></td>
         <td class="amount-cell">
           <% if transaction.transaction_type == "debit" %>
             &#x2212

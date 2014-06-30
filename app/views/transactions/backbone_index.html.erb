@@ -3,9 +3,7 @@
 </div>
 
 <script type="application/json" id="transactions-json">
-  { "transactions": <%= @transactions.to_json.html_safe %>,
-  	"categories": <%= @categories.to_json.html_safe %>
-  }
+	<%= @transactions.to_json(include: :category).html_safe %>
 </script>
 
 <script>

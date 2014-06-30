@@ -15,6 +15,7 @@ Spearmint.Views.TransactionsIndex = Backbone.View.extend({
   render: function () {
     var renderedContent = this.template({
       transactions: this.collection
+      // categories: this.categories
     });
 
     this.$el.html(renderedContent);
