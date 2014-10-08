@@ -23,6 +23,8 @@ html, body, nav, a, header, ul, li, h1, h2, h3, h4, div, label {
 body {
   font-family: sans-serif;
   background-color: #ffffff;
+/*  background: url('http://www.mistermotivaper.co.uk/image/cache/data/Spearmint-1000x1000.jpg');
+  background-repeat: no-repeat;*/
 }
 
 h2 {
@@ -51,6 +53,8 @@ input[type="submit"] {
 
 }
 
+
+
 .group:after {
   content: "";
   clear: both;
@@ -68,6 +72,7 @@ h1 {
 .navbar {
   width: 100%;
   background-color: #090;
+  margin-bottom: 20px;
 }
 
 .navbar > nav {
@@ -152,6 +157,8 @@ h1 {
   margin: auto;
   width: 700px;
   background-color: #eee;
+  /*opacity: .8;*/
+  /*filter: alpha(80);*/
 }
 
 .accounts {

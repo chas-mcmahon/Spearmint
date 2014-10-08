@@ -8,10 +8,10 @@
 
   <table class="transactions-table">
     <thead>
-      <th>Date</th>
-      <th>Description</th>
-      <th>Category</th>
-      <th>Amount</th>
+      <th column='Date'>Date</th>
+      <th column='Description'>Description</th>
+      <th column='Category'>Category</th>
+      <th column='Amount'>Amount</th>
     </thead>
     <tbody>
   <% transactions.each(function(transaction){ %>
@@ -20,17 +20,17 @@
       <td><%= transaction.escape('description') %></td>
       <td><%= transaction.get('category').name %></td>
       <td class="amount-cell">
-        <% if (transaction.transaction_type == "debit") { %>
+        <% if (transaction.escape('transaction_type') == "debit") { %>
           &#x2212
         <% } %>
-        <%= transaction.escape('amount_cents') %>
+        <%= '$' + transaction.convert_cents() %>
       </td>
-      <td>
+<!--       <td>
         <div class="button">
           <a href="#/<%= transaction.id %>/edit">
          <button>Edit Transaction</button></a></div>
       </td>
-    </tr>
+ -->    </tr>
   <% }); %>
     </tbody>
   </table>

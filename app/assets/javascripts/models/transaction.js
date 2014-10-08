@@ -24,6 +24,10 @@ Spearmint.Models.Transaction = Backbone.Model.extend({
       this._category = new Spearmint.Models.Category();
     }
     return this._category;
+  },
+
+  convert_cents: function() {
+    return (this.get('amount_cents')/100).toFixed(2);
   }
 
   // initialize: function () {

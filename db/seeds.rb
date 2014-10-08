@@ -32,7 +32,7 @@ User.all.each do |user|
     date_added: start_date
   })
 
-  company1 = Company.where("name = 'TD'").first
+  company1 = Company.where("name = 'TD' AND user_id = #{user.id}").first
 
   Company.create({
     name: "Chase",
@@ -42,7 +42,7 @@ User.all.each do |user|
     date_added: start_date
   })
 
-  company2 = Company.where("name = 'Chase'").first
+  company2 = Company.where("name = 'Chase' AND user_id = #{user.id}").first
 
   # -----Accounts------------
 
@@ -53,7 +53,7 @@ User.all.each do |user|
     apy: 0.00
   })
 
-  cash1 = CashAccount.where("name = 'TD Student Checking'").first
+  cash1 = CashAccount.where("name = 'TD Student Checking' AND company_id = #{company1.id}").first
 
   CashAccount.create({
     name: "TD Student Savings",
@@ -62,7 +62,7 @@ User.all.each do |user|
     apy: 0.01
   })
 
-  cash2 = CashAccount.where("name = 'TD Student Savings'").first
+  cash2 = CashAccount.where("name = 'TD Student Savings' AND company_id = #{company1.id}").first
 
   CreditAccount.create({
     name: "Credit Card",
@@ -72,7 +72,7 @@ User.all.each do |user|
     apr: 10
   })
 
-  credit1 = CreditAccount.where("name = 'Credit Card'").first
+  credit1 = CreditAccount.where("name = 'Credit Card' AND company_id = #{company2.id}").first
 
   #make new company and update company_id here
   LoanAccount.create({

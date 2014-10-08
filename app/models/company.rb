@@ -7,8 +7,7 @@ class Company < ActiveRecord::Base
   has_many :loan_accounts
 
   validates :name, :user_id, presence: true
-  validates :name, uniqueness: true
-
+  validates :name, uniqueness: {scope: :user_id}
 
   #update to include the values of all account types
   def total_accounts_value_dollars

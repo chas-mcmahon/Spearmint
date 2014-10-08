@@ -7,36 +7,36 @@
 .transaction-main-content {
   width: 600px;
   margin: auto;
-//  background-color: #900;
+  /*background-color: #900;*/
 }
 
 .transactions {
   width: 500px;
-  padding: 0 50px;
+  padding: 20px;
   background-color: #eee;
-//  float: left;
+  /*float: left;*/
 }
 
-//.transactions-header {
-//  width: 500px;
-//}
-//
-//.transactions-header > h2 {
-//  float: left;
-//}
-//
-//.transactions-header button {
-//  float: left;
-//}
+/*.transactions-header {
+  width: 500px;
+}
+
+.transactions-header > h2 {
+  float: left;
+}
+
+.transactions-header button {
+  float: left;
+}*/
 
 .transactions-form {
-//  float: left;
+  /*float: left;*/
 }
 
 .transactions-table {
   width: 500px;
   border-collapse: collapse;
-//  border: 1px solid #ccc;
+  /*border: 1px solid #ccc;*/
 }
 
 .transactions-table > thead {
@@ -46,7 +46,11 @@
 
 .transactions-table > thead > th {
   text-align: left;
-//  border: 1px solid #ccc;
+  /*border: 1px solid #ccc;*/
+}
+
+th:hover {
+  cursor: pointer;
 }
 
 .transactions-table > tbody {
@@ -70,7 +74,7 @@
 }
 
 .transactions-table > tbody > tr > td {
-//  border: 1px solid #ccc;
+  /*border: 1px solid #ccc;*/
 }
 
 .amount-cell {
